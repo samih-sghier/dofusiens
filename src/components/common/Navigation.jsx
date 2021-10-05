@@ -1,5 +1,5 @@
 /* eslint-disable indent */
-import { FilterOutlined, ShoppingOutlined } from '@ant-design/icons';
+import { FilterOutlined, ShoppingOutlined, PlusOutlined } from '@ant-design/icons';
 import * as ROUTE from 'constants/routes';
 import logo from 'images/logo-full.png';
 import React, { useEffect, useRef } from 'react';
@@ -51,7 +51,8 @@ const Navigation = () => {
     ROUTE.CHECKOUT_STEP_3,
     ROUTE.SIGNIN,
     ROUTE.SIGNUP,
-    ROUTE.FORGOT_PASSWORD
+    ROUTE.FORGOT_PASSWORD,
+    ROUTE.ADD_PRODUCT_CLIENT
   ];
 
   if (store.user && store.user.role === 'ADMIN') {
@@ -104,32 +105,44 @@ const Navigation = () => {
             )}
           </BasketToggle>
         </li>
+        <li className="navigation-menu-item">
+          {pathname !== ROUTE.ADD_PRODUCT_CLIENT && (
+            <Link
+              className="button button-small"
+              onClick={onClickLink}
+              to={ROUTE.ADD_PRODUCT_CLIENT}
+            >
+              <PlusOutlined />
+              &nbsp; Add New Product
+              </Link>
+          )}
+        </li>
         {store.user ? (
           <li className="navigation-menu-item">
             <UserAvatar />
           </li>
         ) : (
-          <li className="navigation-action">
-            {pathname !== ROUTE.SIGNUP && (
-              <Link
-                className="button button-small"
-                onClick={onClickLink}
-                to={ROUTE.SIGNUP}
-              >
-                Sign Up
+            <li className="navigation-action">
+              {pathname !== ROUTE.SIGNUP && (
+                <Link
+                  className="button button-small"
+                  onClick={onClickLink}
+                  to={ROUTE.SIGNUP}
+                >
+                  Sign Up
               </Link>
-            )}
-            {pathname !== ROUTE.SIGNIN && (
-              <Link
-                className="button button-small button-muted margin-left-s"
-                onClick={onClickLink}
-                to={ROUTE.SIGNIN}
-              >
-                Sign In
+              )}
+              {pathname !== ROUTE.SIGNIN && (
+                <Link
+                  className="button button-small button-muted margin-left-s"
+                  onClick={onClickLink}
+                  to={ROUTE.SIGNIN}
+                >
+                  Sign In
               </Link>
-            )}
-          </li>
-        )}
+              )}
+            </li>
+          )}
       </ul>
     </nav>
   );
