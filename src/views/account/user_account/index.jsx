@@ -7,6 +7,7 @@ import UserTab from '../components/UserTab';
 const UserAccountTab = lazy(() => import('../components/UserAccountTab'));
 const UserWishListTab = lazy(() => import('../components/UserWishListTab'));
 const UserOrdersTab = lazy(() => import('../components/UserOrdersTab'));
+const UserListingsTab = lazy(() => import('../components/UserListingsTab'));
 
 const Loader = () => (
   <div className="loader" style={{ minHeight: '80vh' }}>
@@ -26,14 +27,19 @@ const UserAccount = () => {
           <UserAccountTab />
         </Suspense>
       </div>
-      <div index={1} label="My Wish List">
+      <div index={1} label="My Listings">
         <Suspense fallback={<Loader />}>
-          <UserWishListTab />
+          <UserListingsTab />
         </Suspense>
       </div>
       <div index={2} label="My Orders">
         <Suspense fallback={<Loader />}>
           <UserOrdersTab />
+        </Suspense>
+      </div>
+      <div index={3} label="My Wish List">
+        <Suspense fallback={<Loader />}>
+          <UserWishListTab />
         </Suspense>
       </div>
     </UserTab>

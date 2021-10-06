@@ -100,7 +100,7 @@ const AppRouter = () => (
           component={view.AddProduct}
           path={ROUTES.ADD_PRODUCT}
         />
-        <AdminRoute
+        <ClientRoute
           component={view.EditProduct}
           path={`${ROUTES.EDIT_PRODUCT}/:id`}
         />
