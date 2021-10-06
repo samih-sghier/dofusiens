@@ -33,6 +33,15 @@
       ".read": true,
       ".write": false,
       "$product_id": {
+        "ownerFullName": {
+          ".validate": "newData.isString()"
+        },
+        "ownerId": {
+          ".validate": "newData.isString()"
+        },
+        "ownerEmail": {
+          ".validate": "newData.isString()"
+        },
         "name": {
           ".validate": "newData.isString()"
         },
@@ -43,6 +52,18 @@
           ".validate": "newData.isNumber()"
         },
         "brand": {
+          ".validate": "newData.isString()"
+        },
+        "game": {
+          ".validate": "newData.isString()"
+        },
+        "gameAsset": {
+          ".validate": "newData.isString()"
+        },
+        "community": {
+          ".validate": "newData.isString()"
+        },
+        "server": {
           ".validate": "newData.isString()"
         },
         "image": {

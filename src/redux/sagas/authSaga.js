@@ -157,6 +157,7 @@ function* authSaga({ type, payload }) {
       } else if (payload.providerData[0].providerId !== 'password' && !snapshot.data()) {
         // add the user if auth provider is not password
         const user = {
+          id: payload.id,
           fullname: payload.displayName ? payload.displayName : 'User',
           avatar: payload.photoURL ? payload.photoURL : defaultAvatar,
           banner: defaultBanner,

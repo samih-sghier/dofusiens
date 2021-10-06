@@ -11,6 +11,7 @@ import { useFileHandler } from 'hooks';
 import PropType from 'prop-types';
 import React from 'react';
 import * as Yup from 'yup';
+import { useSelector } from 'react-redux';
 
 // Default brand names that I used. You can use what you want
 const brandOptions = [
@@ -121,13 +122,16 @@ const FormSchema = Yup.object().shape({
     .min(1, 'Please enter a size for this product.'),
   isFeatured: Yup.boolean(),
   isRecommended: Yup.boolean(),
-  availableColors: Yup.array()
-    .of(Yup.string().required())
-    .min(1, 'Please add a default color for this product.')
+  // availableColors: Yup.array()
+  //   .of(Yup.string().required())
+  //   .min(1, 'Please add a default color for this product.')
 });
 
 const ProductForm = ({ product, onSubmit, isLoading }) => {
+  const profile = useSelector((state) => state.profile);
   const initFormikValues = {
+    ownerId: profile.id,
+    ownerFullName: profile.fullname,
     name: product?.name || '',
     brand: product?.brand || '',
     game: product?.game || '',
@@ -169,8 +173,8 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
     }
   };
 
-  const currentServer = () => {
-    switch(community) {
+  const currentServer = (com) => {
+    switch(com) {
       case 'French' :
         return frenchServers;
       case 'International':
@@ -182,7 +186,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
       case 'Retro 1.30':
         return retroServers;
       default:
-        return spanishServers;
+        return [];
       }
   }
 
@@ -265,7 +269,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                     defaultValue={{ label: values.server, value: values.server }}
                     name="server"
                     iid="server"
-                    options={currentServer(community)}
+                    options={currentServer(values.community)}
                     disabled={isLoading}
                     placeholder="Select Server"
                     label="* Server"
@@ -456,8 +460,14 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
 
 ProductForm.propTypes = {
   product: PropType.shape({
+    ownerId: PropType.string,
+    ownerFullName: PropType.string,
     name: PropType.string,
     brand: PropType.string,
+    gameAsset: PropType.string,
+    game: PropType.string,
+    community: PropType.string,
+    server: PropType.string,
     price: PropType.number,
     maxQuantity: PropType.number,
     description: PropType.string,
@@ -468,7 +478,7 @@ ProductForm.propTypes = {
     imageUrl: PropType.string,
     isFeatured: PropType.bool,
     isRecommended: PropType.bool,
-    availableColors: PropType.arrayOf(PropType.string)
+    //availableColors: PropType.arrayOf(PropType.string)
   }).isRequired,
   onSubmit: PropType.func.isRequired,
   isLoading: PropType.bool.isRequired
