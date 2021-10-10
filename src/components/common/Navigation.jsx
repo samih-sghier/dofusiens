@@ -113,7 +113,7 @@ const Navigation = () => {
               to={ROUTE.ADD_PRODUCT_CLIENT}
             >
               <PlusOutlined />
-              &nbsp; Add New Product
+              &nbsp; Sell Item
               </Link>
           )}
         </li>

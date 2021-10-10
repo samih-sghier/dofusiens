@@ -107,7 +107,45 @@ const ViewProduct = () => {
               <br />
               <div className="divider" />
               <br />
-              <div>
+              {product.game && (
+                <div>
+                  <span className="text-subtle"><b>Game:  </b></span>
+                  <b>{product.game}</b>
+                </div>
+              )}
+              <br />
+              {product.gameAsset && (
+                <div>
+                  <span className="text-subtle"><b>Asset:  </b></span>
+                  <b>{product.gameAsset}</b>
+                </div>
+              )}
+              <br />
+              {product.community && (
+                <div>
+                  <span className="text-subtle"><b>Community:  </b></span>
+                  <b>{product.community}</b>
+                </div>
+              )}
+              <br />
+              {product.server && (
+                <div>
+                  <span className="text-subtle"><b>Server/Platform:  </b></span>
+                  <b>{product.server}</b>
+                </div>
+              )}
+              <br />
+              {product.sizes.length >= 1 && (
+                <div>
+                  <span className="text-subtle">Tags </span>
+                  {product.keywords.map((size) => (<span>
+                    #{size}
+                  </span>))}
+                </div>
+              )}
+              <br />
+              <div className="divider" />
+              {/* <div>
                 <span className="text-subtle">Lens Width and Frame Size</span>
                 <br />
                 <br />
@@ -117,7 +155,7 @@ const ViewProduct = () => {
                   options={product.sizes.sort((a, b) => (a < b ? -1 : 1)).map((size) => ({ label: `${size} mm`, value: size }))}
                   styles={{ menu: (provided) => ({ ...provided, zIndex: 10 }) }}
                 />
-              </div>
+              </div> */}
               <br />
               {product.availableColors.length >= 1 && (
                 <div>
@@ -154,8 +192,8 @@ const ViewProduct = () => {
                 buttonLabel="Try Again"
               />
             ) : (
-              <ProductShowcaseGrid products={recommendedProducts} skeletonCount={3} />
-            )}
+                <ProductShowcaseGrid products={recommendedProducts} skeletonCount={3} />
+              )}
           </div>
         </div>
       )}

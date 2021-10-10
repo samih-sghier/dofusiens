@@ -1,8 +1,11 @@
 import {
   ADD_PRODUCT_SUCCESS,
   CLEAR_SEARCH_STATE, EDIT_PRODUCT_SUCCESS,
+  EDIT_PRODUCT_CLIENT_SUCESS,
+  GET_USER_PRODUCTS_SUCCESS,
   GET_PRODUCTS_SUCCESS, REMOVE_PRODUCT_SUCCESS,
-  SEARCH_PRODUCT_SUCCESS
+  SEARCH_PRODUCT_SUCCESS,
+  CLEAR_USER_PRODUCTS
 } from 'constants/constants';
 
 const initState = {
@@ -19,6 +22,13 @@ export default (state = {
 }, action) => {
   switch (action.type) {
     case GET_PRODUCTS_SUCCESS:
+      return {
+        ...state,
+        lastRefKey: action.payload.lastKey,
+        total: action.payload.total,
+        items: [...state.items, ...action.payload.products]
+      };
+    case GET_USER_PRODUCTS_SUCCESS:
       return {
         ...state,
         lastRefKey: action.payload.lastKey,
@@ -44,12 +54,17 @@ export default (state = {
         ...state,
         searchedProducts: initState
       };
+    case CLEAR_USER_PRODUCTS:
+      return {
+        ...state,
+        searchedProducts: initState
+      };
     case REMOVE_PRODUCT_SUCCESS:
       return {
         ...state,
         items: state.items.filter((product) => product.id !== action.payload)
       };
-    case EDIT_PRODUCT_SUCCESS:
+    case EDIT_PRODUCT_SUCCESS || EDIT_PRODUCT_CLIENT_SUCCESS:
       return {
         ...state,
         items: state.items.map((product) => {

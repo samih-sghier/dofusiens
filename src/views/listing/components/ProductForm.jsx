@@ -15,8 +15,6 @@ import { useSelector } from 'react-redux';
 
 // Default brand names that I used. You can use what you want
 const brandOptions = [
-  { value: 'Salt Maalat', label: 'Salt Maalat' },
-  { value: 'Betsin Maalat', label: 'Betsin Maalat' },
   { value: 'Gaming', label: 'Gaming' }
 ];
 
@@ -156,7 +154,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
   } = useFileHandler({ image: {}, imageCollection: product?.imageCollection || [] });
 
   const onSubmitForm = (form) => {
-    if (imageFile.image.file || product.imageUrl) {
+    if (imageFile.image.file || product.imageUrl || product.image) {
       onSubmit({
         ...form,
         quantity: 1,
@@ -164,7 +162,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
         // of name here instead in firebase functions
         name_lower: form.name.toLowerCase(),
         dateAdded: new Date().getTime(),
-        image: imageFile?.image?.file || product.imageUrl,
+        image: imageFile?.image?.file || product.imageUrl || product.image,
         imageCollection: imageFile.imageCollection
       });
     } else {
@@ -324,7 +322,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                 &nbsp;
                 <div className="product-form-field">
                   <CustomCreatableSelect
-                    defaultValue={values.keywords.map((key) => ({ value: key, label: key }))}
+                    defaultValue={values.sizes.map((key) => ({ value: key, label: key }))}
                     name="sizes"
                     iid="sizes"
                     type="number"

@@ -15,7 +15,7 @@ import { clearBasket, setBasketItems } from 'redux/actions/basketActions';
 import { resetCheckout } from 'redux/actions/checkoutActions';
 import { resetFilter } from 'redux/actions/filterActions';
 import { setAuthenticating, setAuthStatus } from 'redux/actions/miscActions';
-import { clearProfile, setProfile } from 'redux/actions/profileActions';
+import { clearProfile, setProfile, clearUserProducts } from 'redux/actions/profileActions';
 import { history } from 'routers/AppRouter';
 import firebase from 'services/firebase';
 
@@ -117,6 +117,7 @@ function* authSaga({ type, payload }) {
         yield put(clearProfile());
         yield put(resetFilter());
         yield put(resetCheckout());
+        //yield put(clearUserProducts());
         yield put(signOutSuccess());
         yield put(setAuthenticating(false));
         yield call(history.push, ROUTE_SIGNIN);

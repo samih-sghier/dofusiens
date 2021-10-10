@@ -19,25 +19,28 @@ const EditProduct = ({ match }) => {
   };
 
   return (
-    <div className="product-form-container">
-      {error && <Redirect to="/dashboard/products" />}
-      <h2>Edit Product</h2>
-      {product && (
-        <Suspense fallback={(
-          <div className="loader" style={{ minHeight: '80vh' }}>
-            <h6>Loading ... </h6>
-            <br />
-            <LoadingOutlined />
-          </div>
+    <div className="checkout">
+
+      <div className="product-form-container">
+        {error && <Redirect to="/" />}
+        <h2>Edit Product</h2>
+        {product && (
+          <Suspense fallback={(
+            <div className="loader" style={{ minHeight: '80vh' }}>
+              <h6>Loading ... </h6>
+              <br />
+              <LoadingOutlined />
+            </div>
+          )}
+          >
+            <ProductForm
+              isLoading={isLoading}
+              onSubmit={onSubmitForm}
+              product={product}
+            />
+          </Suspense>
         )}
-        >
-          <ProductForm
-            isLoading={isLoading}
-            onSubmit={onSubmitForm}
-            product={product}
-          />
-        </Suspense>
-      )}
+      </div>
     </div>
   );
 };

@@ -101,6 +101,10 @@ const AppRouter = () => (
           path={ROUTES.ADD_PRODUCT}
         />
         <ClientRoute
+          component={view.EditProductClient}
+          path={`${ROUTES.EDIT_PRODUCT_CLIENT}/:id`}
+        />
+        <AdminRoute
           component={view.EditProduct}
           path={`${ROUTES.EDIT_PRODUCT}/:id`}
         />

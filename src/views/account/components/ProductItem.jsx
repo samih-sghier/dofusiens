@@ -1,5 +1,5 @@
 import { ImageLoader } from 'components/common';
-import { EDIT_PRODUCT } from 'constants/routes';
+import { EDIT_PRODUCT_CLIENT } from 'constants/routes';
 import { displayActionMessage, displayDate, displayMoney } from 'helpers/utils';
 import PropType from 'prop-types';
 import React, { useRef } from 'react';
@@ -14,7 +14,7 @@ const ProductItem = ({ product }) => {
   const productRef = useRef(null);
 
   const onClickEdit = () => {
-    history.push(`${EDIT_PRODUCT}/${product.id}`);
+    history.push(`${EDIT_PRODUCT_CLIENT}/${product.id}`);
   };
 
   const onDeleteProduct = () => {

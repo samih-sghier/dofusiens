@@ -2,9 +2,13 @@
 import {
   ADD_PRODUCT,
   EDIT_PRODUCT,
+  EDIT_PRODUCT_CLIENT,
   GET_PRODUCTS,
   REMOVE_PRODUCT,
-  SEARCH_PRODUCT
+  SEARCH_PRODUCT,
+  GET_USER_PRODUCTS,
+  GET_USER_PRODUCTS_SUCCESS,
+  CLEAR_USER_PRODUCTS
 } from 'constants/constants';
 import { ADMIN_PRODUCTS } from 'constants/routes';
 import { displayActionMessage } from 'helpers/utils';
@@ -18,7 +22,8 @@ import {
   addProductSuccess,
   clearSearchState, editProductSuccess, getProductsSuccess,
   removeProductSuccess,
-  searchProductSuccess
+  searchProductSuccess,
+  getUserProductsSuccess
 } from '../actions/productActions';
 
 function* initRequest() {
@@ -62,7 +67,41 @@ function* productSaga({ type, payload }) {
         yield handleError(e);
       }
       break;
-
+    case CLEAR_USER_PRODUCTS:
+      try {
+        yield put(getUserProductsSuccess({
+          products: [],
+          lastKey: null,
+          total: null
+        }));
+      } catch (e) {
+        console.log(e);
+        yield handleError(e);
+      }
+      break;
+    case GET_USER_PRODUCTS:
+      try {
+        yield initRequest();
+        const state = yield select();
+        const result = yield call(firebase.getUserProducts, payload.lastRef, payload.id);
+        //alert(payload.id);
+        if (result.products.length === 0) {
+          handleError('No items found.');
+        } else {
+          yield put(getUserProductsSuccess({
+            products: result.products,
+            lastKey: result.lastKey ? result.lastKey : state.products.lastRefKey,
+            total: result.total ? result.total : state.products.total
+          }));
+          yield put(setRequestStatus(''));
+        }
+        // yield put({ type: SET_LAST_REF_KEY, payload: result.lastKey });
+        yield put(setLoading(false));
+      } catch (e) {
+        console.log(e);
+        yield handleError(e);
+      }
+      break;
     case ADD_PRODUCT: {
       try {
         yield initRequest();
@@ -101,7 +140,7 @@ function* productSaga({ type, payload }) {
       }
       break;
     }
-    case EDIT_PRODUCT: {
+    case EDIT_PRODUCT || EDIT_PRODUCT_CLIENT: {
       try {
         yield initRequest();
 
