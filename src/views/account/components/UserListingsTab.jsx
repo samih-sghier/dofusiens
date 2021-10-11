@@ -14,7 +14,7 @@ const UserListingsTab = () => {
   useScrollTop();
 
   const store = useSelector((state) => ({
-    filteredProducts: selectFilter(state.products.items, state.filter),
+    filteredProducts: state.products.userItems,
     requestStatus: state.app.requestStatus,
     isLoading: state.app.loading,
     products: state.products

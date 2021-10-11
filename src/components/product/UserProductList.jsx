@@ -4,7 +4,7 @@ import PropType from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoading } from 'redux/actions/miscActions';
-import { getProducts, getUserProducts } from 'redux/actions/productActions';
+import { getUserProducts } from 'redux/actions/productActions';
 
 const UserProductList = (props) => {
   const {
@@ -16,11 +16,11 @@ const UserProductList = (props) => {
 
   const fetchProducts = () => {
     setFetching(true);
-    dispatch(getUserProducts(profile.id, products.lastRefKey));
+    dispatch(getUserProducts(profile.id, products.lastUserRefKey));
   };
 
   useEffect(() => {
-    if (products.items.length === 0 || !products.lastRefKey) {
+    if (products.userItems.length === 0 || !products.lastUserRefKey) {
       fetchProducts();
     }
 
@@ -30,11 +30,11 @@ const UserProductList = (props) => {
 
   useEffect(() => {
     setFetching(false);
-  }, [products.lastRefKey]);
+  }, [products.lastUserRefKey]);
 
   if (filteredProducts.length === 0 && !isLoading) {
     return (
-      <MessageDisplay message={requestStatus?.message || 'No products found.'} />
+      <MessageDisplay message={requestStatus?.message || 'No Listings Found.'} />
     );
   } if (filteredProducts.length === 0 && requestStatus) {
     return (
@@ -49,9 +49,9 @@ const UserProductList = (props) => {
     <Boundary>
       {children}
       {/* Show 'Show More' button if products length is less than total products */}
-      {products.items.length < products.total && (
+      {products.userItems.length < products.userTotal && (
         <div className="d-flex-center padding-l">
-          <button
+          <button 
             className="button button-small"
             disabled={isFetching}
             onClick={fetchProducts}

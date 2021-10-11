@@ -14,7 +14,8 @@ import {
   SEARCH_PRODUCT_SUCCESS,
   EDIT_PRODUCT_CLIENT_SUCESS,
   GET_USER_PRODUCTS,
-  GET_USER_PRODUCTS_SUCCESS
+  GET_USER_PRODUCTS_SUCCESS,
+  CLEAR_USER_PRODUCTS
 } from 'constants/constants';
 
 export const getProducts = (lastRef) => ({
@@ -108,4 +109,8 @@ export const getUserProducts = (id, lastRef) => ({
 export const getUserProductsSuccess = (products) => ({
   type: GET_USER_PRODUCTS_SUCCESS,
   payload: products
+});
+
+export const clearUserProducts = () => ({
+  type: CLEAR_USER_PRODUCTS
 });

@@ -205,7 +205,7 @@ function* productSaga({ type, payload }) {
         yield call(firebase.removeProduct, payload);
         yield put(removeProductSuccess(payload));
         yield put(setLoading(false));
-        yield handleAction(ADMIN_PRODUCTS, 'Item succesfully removed', 'success');
+        yield handleAction(null, 'Item succesfully removed', 'success');
       } catch (e) {
         yield handleError(e);
         yield handleAction(undefined, `Item failed to remove: ${e.message}`, 'error');
