@@ -64,3 +64,83 @@ export const displayActionMessage = (msg, status = 'info') => {
     }
   }, 3000);
 };
+
+export const payments = [
+  { value: 'Face-To-Face', label: 'Face-To-Face' },
+  { value: 'PayPal', label: 'PayPal' },
+  { value: 'CIH', label: 'CIH' }
+];
+
+export const brandOptions = [
+  { value: 'Gaming', label: 'Gaming' }
+];
+
+export const game = [
+  { value: 'Dofus', label: 'Dofus' },
+  { value: 'Dofus Touch', label: 'Dofus Touch' },
+];
+
+export const gameAsset = [
+  { value: 'Kamas', label: 'Kamas' },
+  // { value: 'Items', label: 'Items' },
+  // { value: 'Accounts', label: 'Accounts' },
+];
+export const community = [
+  { value: 'All', label: 'All' },
+  { value: 'Brazil', label: 'Brazil' },
+  { value: 'Spanish', label: 'Espagnole' },
+  { value: 'French', label: 'French' },
+  { value: 'International', label: 'International' },
+  { value: 'Retro 1.30', label: 'Retro 1.30' }
+];
+
+export const brazilServers = [
+  { value: 'All', label: 'All' },
+  { value: 'Crocabulia', label: 'Crocabulia' }
+];
+
+export const retroServers = [
+  { value: 'All', label: 'All' },
+  { value: 'Boune', label: 'Boune' },
+  { value: 'Crail', label: 'Crail' },
+  { value: 'Eratz', label: 'Eratz' },
+  { value: 'Galgarion', label: 'Galgarion' },
+  { value: 'Henual', label: 'Henual' }
+];
+
+export const frenchServers = [
+  { value: 'All', label: 'All' },
+  { value: 'Agride', label: 'Agride' },
+  { value: 'Brumen', label: 'Brumen' },
+  { value: 'Furye', label: 'Furye' },
+  { value: 'Julith', label: 'Julith' },
+  { value: 'Meriana', label: 'Meriana' },
+  { value: 'Merkator', label: 'Merkator' },
+  { value: 'Nidas', label: 'Nidas' },
+  { value: 'Pandore', label: 'Pandore' },
+  { value: 'Ush', label: 'Ush' }
+];
+
+export const spanishServers = [
+  { value: 'All', label: 'All' },
+  { value: 'Atcham', label: 'Atcham' },
+  { value: 'Rubilax', label: 'Rubilax' }
+];
+
+export const internationalServers = [
+  { value: 'All', label: 'All' },
+  { value: 'Dagob', label: 'Dagob' },
+  { value: 'Domo', label: 'Domo' },
+  { value: 'Echo', label: 'Echo' },
+  { value: 'Hoskar', label: 'Hoskar' },
+  { value: 'Hulhu', label: 'Hulhu' },
+  { value: 'Ilyzaelle', label: 'Ilyzaelle' },
+  { value: 'Jahash', label: 'Jahash' },
+  { value: 'Muta', label: 'Muta' },
+  { value: 'Ombre', label: 'Ombre' },
+  { value: 'Oto Mustam', label: 'Oto Mustam' },
+  { value: 'Pikmi', label: 'Pikmi' },
+  { value: 'Sak', label: 'Sak' },
+  { value: 'Ultram', label: 'Ultram' }
+];
+

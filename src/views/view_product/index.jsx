@@ -107,31 +107,31 @@ const ViewProduct = () => {
               <br />
               <div className="divider" />
               <br />
+              Product Details
+              <br />
+              <br />
               {product.game && (
                 <div>
-                  <span className="text-subtle"><b>Game:  </b></span>
-                  <b>{product.game}</b>
+                  <span className="text-subtle"><b>Game: <b>{product.game}</b></b></span>
                 </div>
               )}
               <br />
               {product.gameAsset && (
                 <div>
-                  <span className="text-subtle"><b>Asset:  </b></span>
-                  <b>{product.gameAsset}</b>
+                  <span className="text-subtle"><b>Asset: <b>{product.gameAsset}</b></b></span>
                 </div>
               )}
               <br />
               {product.community && (
                 <div>
-                  <span className="text-subtle"><b>Community:  </b></span>
-                  <b>{product.community}</b>
+                  <span className="text-subtle"><b>Community: <b>{product.community}</b></b></span>
+
                 </div>
               )}
               <br />
               {product.server && (
                 <div>
-                  <span className="text-subtle"><b>Server/Platform:  </b></span>
-                  <b>{product.server}</b>
+                  <span className="text-subtle"><b>Server/Platform: <b>{product.server}</b></b></span>
                 </div>
               )}
               <br />
@@ -168,6 +168,14 @@ const ViewProduct = () => {
                   />
                 </div>
               )}
+              <div>
+                Accepted Payments Methods
+                <span className="text-subtle"></span>
+                <br />
+                <br />
+              </div>
+              <div className="divider" />
+              <br />
               <h1>{displayMoney(product.price)}</h1>
               <div className="product-modal-action">
                 <button

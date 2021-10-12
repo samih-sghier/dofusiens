@@ -2,6 +2,7 @@
 import { CheckOutlined, LoadingOutlined } from '@ant-design/icons';
 import { ImageLoader } from 'components/common';
 import {
+  Select,
   CustomColorInput, CustomCreatableSelect, CustomInput, CustomTextarea
 } from 'components/formik';
 import {
@@ -12,80 +13,10 @@ import PropType from 'prop-types';
 import React from 'react';
 import * as Yup from 'yup';
 import { useSelector } from 'react-redux';
+import { brandOptions, game, gameAsset, community, 
+  brazilServers, retroServers, frenchServers, spanishServers, 
+  internationalServers, payments } from 'helpers/utils';
 
-// Default brand names that I used. You can use what you want
-const brandOptions = [
-  { value: 'Gaming', label: 'Gaming' }
-];
-
-const game = [
-  { value: 'Dofus', label: 'Dofus' },
-  { value: 'Dofus Touch', label: 'Dofus Touch' },
-];
-
-const gameAsset = [
-  { value: 'Kamas', label: 'Kamas' },
-  // { value: 'Items', label: 'Items' },
-  // { value: 'Accounts', label: 'Accounts' },
-];
-const community = [
-  { value: 'All', label: 'All' },
-  { value: 'Brazil', label: 'Brazil' },
-  { value: 'Spanish', label: 'Espagnole' },
-  { value: 'French', label: 'French' },
-  { value: 'International', label: 'International' },
-  { value: 'Retro 1.30', label: 'Retro 1.30' }
-];
-
-const brazilServers = [
-  { value: 'All', label: 'All' },
-  { value: 'Crocabulia', label: 'Crocabulia' }
-];
-
-const retroServers = [
-  { value: 'All', label: 'All' },
-  { value: 'Boune', label: 'Boune' },
-  { value: 'Crail', label: 'Crail' },
-  { value: 'Eratz', label: 'Eratz' },
-  { value: 'Galgarion', label: 'Galgarion' },
-  { value: 'Henual', label: 'Henual' }
-];
-
-const frenchServers = [
-  { value: 'All', label: 'All' },
-  { value: 'Agride', label: 'Agride' },
-  { value: 'Brumen', label: 'Brumen' },
-  { value: 'Furye', label: 'Furye' },
-  { value: 'Julith', label: 'Julith' },
-  { value: 'Meriana', label: 'Meriana' },
-  { value: 'Merkator', label: 'Merkator' },
-  { value: 'Nidas', label: 'Nidas' },
-  { value: 'Pandore', label: 'Pandore' },
-  { value: 'Ush', label: 'Ush' }
-];
-
-const spanishServers = [
-  { value: 'All', label: 'All' },
-  { value: 'Atcham', label: 'Atcham' },
-  { value: 'Rubilax', label: 'Rubilax' }
-];
-
-const internationalServers = [
-  { value: 'All', label: 'All' },
-  { value: 'Dagob', label: 'Dagob' },
-  { value: 'Domo', label: 'Domo' },
-  { value: 'Echo', label: 'Echo' },
-  { value: 'Hoskar', label: 'Hoskar' },
-  { value: 'Hulhu', label: 'Hulhu' },
-  { value: 'Ilyzaelle', label: 'Ilyzaelle' },
-  { value: 'Jahash', label: 'Jahash' },
-  { value: 'Muta', label: 'Muta' },
-  { value: 'Ombre', label: 'Ombre' },
-  { value: 'Oto Mustam', label: 'Oto Mustam' },
-  { value: 'Pikmi', label: 'Pikmi' },
-  { value: 'Sak', label: 'Sak' },
-  { value: 'Ultram', label: 'Ultram' }
-];
 
 
 const FormSchema = Yup.object().shape({
@@ -115,11 +46,11 @@ const FormSchema = Yup.object().shape({
   keywords: Yup.array()
     .of(Yup.string())
     .min(1, 'Please enter at least 1 keyword for this product.'),
-  sizes: Yup.array()
-    .of(Yup.number())
-    .min(1, 'Please enter a size for this product.'),
   isFeatured: Yup.boolean(),
   isRecommended: Yup.boolean(),
+  paymentMethods: Yup.array()
+    .of(Yup.string().required())
+    .min(1, 'Please add an acceptable payment method for this product.')
   // availableColors: Yup.array()
   //   .of(Yup.string().required())
   //   .min(1, 'Please add a default color for this product.')
@@ -140,10 +71,10 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
     maxQuantity: product?.maxQuantity || 0,
     description: product?.description || '',
     keywords: product?.keywords || [],
-    sizes: product?.sizes || [],
     isFeatured: product?.isFeatured || false,
     isRecommended: product?.isRecommended || false,
-    availableColors: product?.availableColors || []
+    // availableColors: product?.availableColors || [],
+    paymentMethods: product?.paymentMethods || []
   };
 
   const {
@@ -322,14 +253,14 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                 &nbsp;
                 <div className="product-form-field">
                   <CustomCreatableSelect
-                    defaultValue={values.sizes.map((key) => ({ value: key, label: key }))}
-                    name="sizes"
-                    iid="sizes"
-                    type="number"
+                    defaultValue={values.paymentMethods.map((key) => ({ value: key, label: key }))}
+                    name="paymentMethods"
+                    iid="paymentMethods"
                     isMulti
+                    options={payments}
                     disabled={isLoading}
-                    placeholder="Create/Select Sizes"
-                    label="* Sizes (Millimeter)"
+                    placeholder="Select Acceptable Payment Methods"
+                    label="* Acceptable Payment Methods"
                   />
                 </div>
               </div>
@@ -471,11 +402,11 @@ ProductForm.propTypes = {
     description: PropType.string,
     keywords: PropType.arrayOf(PropType.string),
     imageCollection: PropType.arrayOf(PropType.object),
-    sizes: PropType.arrayOf(PropType.string),
     image: PropType.string,
     imageUrl: PropType.string,
     isFeatured: PropType.bool,
     isRecommended: PropType.bool,
+    paymentMethods: PropType.arrayOf(PropType.string)
     //availableColors: PropType.arrayOf(PropType.string)
   }).isRequired,
   onSubmit: PropType.func.isRequired,

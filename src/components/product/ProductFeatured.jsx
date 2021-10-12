@@ -24,7 +24,8 @@ const ProductFeatured = ({ product }) => {
           ) : <Skeleton width="100%" height="100%" />}
         </div>
         <div className="product-display-details">
-          <h2>{product.name || <Skeleton width={80} />}</h2>
+          <h2>{(product.name && product.name.length > 20 ? product.name.slice(0, 20) + "..." : product.name) 
+          || <Skeleton width={80} />}</h2>
           <p className="text-subtle text-italic">
             {product.brand || <Skeleton width={40} />}
           </p>
