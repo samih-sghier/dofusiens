@@ -27,7 +27,7 @@ const ProductFeatured = ({ product }) => {
           <h2>{(product.name && product.name.length > 20 ? product.name.slice(0, 20) + "..." : product.name) 
           || <Skeleton width={80} />}</h2>
           <p className="text-subtle text-italic">
-            {product.brand || <Skeleton width={40} />}
+            {product.category || <Skeleton width={40} />}
           </p>
         </div>
       </div>
@@ -40,7 +40,7 @@ ProductFeatured.propTypes = {
     image: PropType.string,
     name: PropType.string,
     id: PropType.string,
-    brand: PropType.string
+    category: PropType.string
   }).isRequired
 };
 

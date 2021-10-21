@@ -3,7 +3,8 @@ import {
   CLEAR_RECENT_SEARCH,
   REMOVE_SELECTED_RECENT, RESET_FILTER, SET_BRAND_FILTER,
   SET_MAX_PRICE_FILTER,
-  SET_MIN_PRICE_FILTER, SET_TEXT_FILTER
+  SET_MIN_PRICE_FILTER, SET_TEXT_FILTER,
+  SET_GAME_FILTER, SET_SERVER_FILTER, SET_ASSET_FILTER
 } from 'constants/constants';
 
 export const setTextFilter = (keyword) => ({
@@ -14,6 +15,21 @@ export const setTextFilter = (keyword) => ({
 export const setBrandFilter = (brand) => ({
   type: SET_BRAND_FILTER,
   payload: brand
+});
+
+export const setGameFilter = (game) => ({
+  type: SET_GAME_FILTER,
+  payload: game
+});
+
+export const setServerFilter = (server) => ({
+  type: SET_SERVER_FILTER,
+  payload: server
+});
+
+export const setAssetFilter = (asset) => ({
+  type: SET_ASSET_FILTER,
+  payload: asset
 });
 
 export const setMinPriceFilter = (min) => ({

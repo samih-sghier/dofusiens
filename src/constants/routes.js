@@ -20,3 +20,6 @@ export const CHECKOUT_STEP_2 = '/checkout/step2';
 export const CHECKOUT_STEP_3 = '/checkout/step3';
 export const VIEW_PRODUCT = '/product/:id';
 export const ADD_PRODUCT_CLIENT = '/listing/add';
+export const CLIENT_DASHBOARD = '/profile/dashboard';
+export const USERS_LIST = '/profile/users';
+export const ADD_REVIEW = '/profile/add_review';

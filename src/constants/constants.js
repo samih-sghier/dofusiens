@@ -54,6 +54,10 @@ export const CLEAR_USER_PRODUCTS = 'CLEAR_USER_PRODUCTS';
 
 export const SET_TEXT_FILTER = 'SET_TEXT_FILTER';
 export const SET_BRAND_FILTER = 'SET_BRAND_FILTER';
+export const SET_GAME_FILTER = 'SET_GAME_FILTER';
+export const SET_SERVER_FILTER = 'SET_SERVER_FILTER';
+export const SET_ASSET_FILTER = 'SET_ASSET_FILTER';
+
 export const SET_MIN_PRICE_FILTER = 'SET_MIN_PRICE_FILTER';
 export const SET_MAX_PRICE_FILTER = 'SET_MAX_PRICE_FILTER';
 export const RESET_FILTER = 'RESET_FILTER';
@@ -63,6 +67,7 @@ export const REMOVE_SELECTED_RECENT = 'REMOVE_SELECTED_RECENT';
 
 export const REGISTER_USER = 'REGISTER_USER';
 export const GET_USER = 'GET_USER';
+export const GET_ALL_USERS = 'GET_ALL_USERS';
 export const ADD_USER = 'ADD_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const EDIT_USER = 'EDIT_USER';
@@ -70,3 +75,7 @@ export const EDIT_USER = 'EDIT_USER';
 export const LOADING = 'LOADING';
 export const IS_AUTHENTICATING = 'IS_AUTHENTICATING';
 export const SET_REQUEST_STATUS = 'SET_REQUEST_STATUS';
+
+export const CLIENT_DASHBOARD = 'CLIENT_DASHBOARD';
+export const USERS_LIST = 'USERS_LIST';
+export const ADD_REVIEW = 'ADD_REVIEW';

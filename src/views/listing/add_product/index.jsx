@@ -35,7 +35,7 @@ const AddProduct = () => {
             onSubmit={onSubmit}
             product={{
               name: '',
-              brand: '',
+              category: '',
               price: 0,
               maxQuantity: 0,
               description: '',
@@ -53,7 +53,7 @@ const AddProduct = () => {
             onSubmit={onSubmit}
             product={{
               name: '',
-              brand: '',
+              category: '',
               price: 0,
               maxQuantity: 0,
               description: '',

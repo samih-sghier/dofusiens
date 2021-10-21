@@ -37,7 +37,9 @@ class Firebase {
   addUser = (id, user) => this.db.collection("users").doc(id).set(user);
 
   getUser = (id) => this.db.collection("users").doc(id).get();
-
+  
+  getAllUsers = (id) => this.db.collection("users").get();
+  
   passwordUpdate = (password) => this.auth.currentUser.updatePassword(password);
 
   changePassword = (currentPassword, newPassword) =>

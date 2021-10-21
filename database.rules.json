@@ -51,7 +51,7 @@
         "price": {
           ".validate": "newData.isNumber()"
         },
-        "brand": {
+        "category": {
           ".validate": "newData.isString()"
         },
         "game": {
@@ -74,6 +74,9 @@
         },
         "quantity": {
           ".validate": "newData.isNumber()"
+        },
+        "paymentMethods": {
+          ".validate": "newData.isArray()"
         },
         "dateAdded": {
           ".validate": "newData.isNumber()"

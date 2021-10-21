@@ -3,13 +3,16 @@ import {
   CLEAR_RECENT_SEARCH,
   REMOVE_SELECTED_RECENT, RESET_FILTER, SET_BRAND_FILTER,
   SET_MAX_PRICE_FILTER,
-  SET_MIN_PRICE_FILTER, SET_TEXT_FILTER
+  SET_MIN_PRICE_FILTER, SET_TEXT_FILTER,
+  SET_GAME_FILTER, SET_SERVER_FILTER
 } from 'constants/constants';
 
 const initState = {
   recent: [],
   keyword: '',
-  brand: '',
+  category: '',
+  game: '',
+  server: '',
   minPrice: 0,
   maxPrice: 0,
   sortBy: ''
@@ -26,7 +29,17 @@ export default (state = initState, action) => {
     case SET_BRAND_FILTER:
       return {
         ...state,
-        brand: action.payload
+        category: action.payload
+      };
+    case SET_GAME_FILTER:
+      return {
+        ...state,
+        game: action.payload
+      };
+    case SET_SERVER_FILTER:
+      return {
+        ...state,
+        server: action.payload
       };
     case SET_MAX_PRICE_FILTER:
       return {

@@ -1,5 +1,5 @@
 import { ImageLoader } from 'components/common';
-import { EDIT_PRODUCT_CLIENT } from 'constants/routes';
+import { EDIT_PRODUCT } from 'constants/routes';
 import { displayActionMessage, displayDate, displayMoney } from 'helpers/utils';
 import PropType from 'prop-types';
 import React, { useRef } from 'react';
@@ -14,7 +14,7 @@ const ProductItem = ({ product }) => {
   const productRef = useRef(null);
 
   const onClickEdit = () => {
-    history.push(`${EDIT_PRODUCT_CLIENT}/${product.id}`);
+    history.push(`${EDIT_PRODUCT}/${product.id}`);
   };
 
   const onDeleteProduct = () => {
@@ -40,7 +40,7 @@ const ProductItem = ({ product }) => {
         className={`item item-products ${!product.id && 'item-loading'}`}
         ref={productRef}
       >
-        <div className="grid grid-count-6">
+        <div className="grid grid-count-8">
           <div className="grid-col item-img-wrapper">
             {product.image ? (
               <ImageLoader
@@ -71,11 +71,11 @@ const ProductItem = ({ product }) => {
         {product.id && (
           <div className="item-action">
             <button
-              className="button button-border button-small"
+              className="button button-border button-small button-allowed"
               onClick={onClickEdit}
               type="button"
             >
-              Edit
+              Upvote
             </button>
             &nbsp;
             <button
@@ -83,10 +83,10 @@ const ProductItem = ({ product }) => {
               onClick={onDeleteProduct}
               type="button"
             >
-              Delete
+              Downvote
             </button>
             <div className="item-action-confirm">
-              <h5>Are you sure you want to delete this?</h5>
+              <h5>Are you sure you want to downvote user</h5>
               <button
                 className="button button-small button-border"
                 onClick={onCancelDelete}

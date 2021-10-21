@@ -87,6 +87,18 @@ const AppRouter = () => (
           component={view.AddProductClient}
           path={ROUTES.ADD_PRODUCT_CLIENT}
         />
+        <ClientRoute
+          component={view.AddReview}
+          path={ROUTES.ADD_REVIEW}
+        />
+        <ClientRoute
+          component={view.ClientDashboard}
+          path={ROUTES.CLIENT_DASHBOARD}
+        />
+        <ClientRoute
+          component={view.UsersList}
+          path={ROUTES.USERS_LIST}
+        />
         <AdminRoute
           component={view.Dashboard}
           exact

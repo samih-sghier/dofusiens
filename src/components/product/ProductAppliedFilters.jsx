@@ -7,7 +7,7 @@ import { applyFilter } from 'redux/actions/filterActions';
 
 const ProductAppliedFilters = ({ filteredProductsCount }) => {
   const filter = useSelector((state) => state.filter, shallowEqual);
-  const fields = ['brand', 'minPrice', 'maxPrice', 'sortBy', 'keyword'];
+  const fields = ['category', 'asset', 'game', 'server', 'minPrice', 'maxPrice', 'sortBy', 'keyword'];
   const isFiltered = fields.some((key) => !!filter[key]);
   const dispatch = useDispatch();
 
@@ -20,7 +20,19 @@ const ProductAppliedFilters = ({ filteredProductsCount }) => {
   };
 
   const onRemoveBrandFilter = () => {
-    dispatch(applyFilter({ brand: '' }));
+    dispatch(applyFilter({ category: '' }));
+  };
+
+  const onRemoveGameFilter = () => {
+    dispatch(applyFilter({ game: '', server: '' }));
+  };
+
+  const onRemoveServerFilter = () => {
+    dispatch(applyFilter({ server: '' }));
+  };
+
+  const onRemoveAssetFilter = () => {
+    dispatch(applyFilter({ asset: '' }));
   };
 
   const onRemoveSortFilter = () => {
@@ -51,11 +63,11 @@ const ProductAppliedFilters = ({ filteredProductsCount }) => {
             </div>
           </div>
         )}
-        {filter.brand && (
+        {filter.category && (
           <div className="pill-wrapper">
-            <span className="d-block">Brand</span>
+            <span className="d-block">Category</span>
             <div className="pill padding-right-l">
-              <h5 className="pill-content margin-0">{filter.brand}</h5>
+              <h5 className="pill-content margin-0">{filter.category}</h5>
               <div className="pill-remove" onClick={onRemoveBrandFilter} role="presentation">
                 <h5 className="margin-0 text-subtle">
                   <CloseCircleOutlined />
@@ -64,6 +76,49 @@ const ProductAppliedFilters = ({ filteredProductsCount }) => {
             </div>
           </div>
         )}
+        {filter.game && (
+          <div className="pill-wrapper">
+            <span className="d-block">Game</span>
+            <div className="pill padding-right-l">
+              <h5 className="pill-content margin-0">{filter.game}</h5>
+              <div className="pill-remove" onClick={onRemoveGameFilter} role="presentation">
+                <h5 className="margin-0 text-subtle">
+                  <CloseCircleOutlined />
+                </h5>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {filter.server && (
+          <div className="pill-wrapper">
+            <span className="d-block">Server</span>
+            <div className="pill padding-right-l">
+              <h5 className="pill-content margin-0">{filter.server}</h5>
+              <div className="pill-remove" onClick={onRemoveServerFilter} role="presentation">
+                <h5 className="margin-0 text-subtle">
+                  <CloseCircleOutlined />
+                </h5>
+              </div>
+            </div>
+          </div>
+        )}
+
+
+        {filter.asset && (
+          <div className="pill-wrapper">
+            <span className="d-block">Asset</span>
+            <div className="pill padding-right-l">
+              <h5 className="pill-content margin-0">{filter.asset}</h5>
+              <div className="pill-remove" onClick={onRemoveAssetFilter} role="presentation">
+                <h5 className="margin-0 text-subtle">
+                  <CloseCircleOutlined />
+                </h5>
+              </div>
+            </div>
+          </div>
+        )}
+
         {(!!filter.minPrice || !!filter.maxPrice) && (
           <div className="pill-wrapper">
             <span className="d-block">Price Range</span>

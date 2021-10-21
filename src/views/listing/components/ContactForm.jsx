@@ -24,7 +24,7 @@ const FormSchema = Yup.object().shape({
   name: Yup.string()
     .required('Product name is required.')
     .max(60, 'Product name must only be less than 60 characters.'),
-  brand: Yup.string()
+  category: Yup.string()
     .required('Brand name is required.'),
   price: Yup.number()
     .positive('Price is invalid.')
@@ -52,7 +52,7 @@ const FormSchema = Yup.object().shape({
 const ContactForm = ({ product, onSubmit, isLoading }) => {
   const initFormikValues = {
     name: product?.name || '',
-    brand: product?.brand || '',
+    category: product?.category || '',
     price: product?.price || 0,
     maxQuantity: product?.maxQuantity || 0,
     description: product?.description || '',
@@ -316,7 +316,7 @@ const ContactForm = ({ product, onSubmit, isLoading }) => {
 ContactForm.propTypes = {
   product: PropType.shape({
     name: PropType.string,
-    brand: PropType.string,
+    category: PropType.string,
     price: PropType.number,
     maxQuantity: PropType.number,
     description: PropType.string,

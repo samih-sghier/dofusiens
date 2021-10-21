@@ -15,7 +15,10 @@ const Filters = ({ closeModal }) => {
     products: state.products.items
   }));
   const [field, setFilter] = useState({
-    brand: filter.brand,
+    category: filter.category,
+    game: filter.game,
+    server: filter.server,
+    asset: filter.asset,
     minPrice: filter.minPrice,
     maxPrice: filter.maxPrice,
     sortBy: filter.sortBy
@@ -43,10 +46,28 @@ const Filters = ({ closeModal }) => {
     setFilter({ ...field, minPrice: minVal, maxPrice: maxVal });
   };
 
-  const onBrandFilterChange = (e) => {
+  const onCategoryFilterChange = (e) => {
     const val = e.target.value;
 
-    setFilter({ ...field, brand: val });
+    setFilter({ ...field, category: val });
+  };
+
+  const onGameFilterChange = (e) => {
+    const val = e.target.value;
+
+    setFilter({ ...field, game: val });
+  };
+
+  const onServerFilterChange = (e) => {
+    const val = e.target.value;
+
+    setFilter({ ...field, server: val });
+  };
+
+  const onAssetFilterChange = (e) => {
+    const val = e.target.value;
+
+    setFilter({ ...field, asset: val });
   };
 
   const onSortFilterChange = (e) => {
@@ -68,7 +89,7 @@ const Filters = ({ closeModal }) => {
   };
 
   const onResetFilter = () => {
-    const filterFields = ['brand', 'minPrice', 'maxPrice', 'sortBy'];
+    const filterFields = ['category', 'game', 'server', 'minPrice', 'maxPrice', 'sortBy'];
 
     if (filterFields.some((key) => !!filter[key])) {
       dispatch(resetFilter());
@@ -80,26 +101,85 @@ const Filters = ({ closeModal }) => {
   return (
     <div className="filters">
       <div className="filters-field">
-        <span>Brand</span>
+        <span>Category</span>
         <br />
         <br />
         {products.length === 0 && isLoading ? (
           <h5 className="text-subtle">Loading Filter</h5>
         ) : (
-          <select
-            className="filters-brand"
-            value={field.brand}
-            disabled={isLoading || products.length === 0}
-            onChange={onBrandFilterChange}
-          >
-            <option value="">All Brands</option>
-            <option value="salt">Salt Maalat</option>
-            <option value="betsin">Betsin Maalat</option>
-            <option value="black">Black Kibal</option>
-            <option value="sexbomb">Sexbomb</option>
-          </select>
-        )}
+            <select
+              className="filters-brand"
+              value={field.category}
+              disabled={isLoading || products.length === 0}
+              onChange={onCategoryFilterChange}
+            >
+              <option value="">All Categories</option>
+              <option value="gaming">Gaming</option>
+            </select>
+          )}
       </div>
+      {field.category == "gaming" ?
+        <div className="filters-field">
+          <span>Game</span>
+          <br />
+          <br />
+          {products.length === 0 && isLoading ? (
+            <h5 className="text-subtle">Loading Filter</h5>
+          ) : (
+              <select
+                className="filters-brand"
+                value={field.game}
+                disabled={isLoading || products.length === 0}
+                onChange={onGameFilterChange}
+              >
+                <option value="">All Games</option>
+                <option value="dofus">Dofus</option>
+                <option value="dofus touch">Dofus Touch</option>
+              </select>
+            )}
+        </div> : null}
+      {field.game == "dofus" ?
+        <div className="filters-field">
+          <span>Server</span>
+          <br />
+          <br />
+          {products.length === 0 && isLoading ? (
+            <h5 className="text-subtle">Loading Filter</h5>
+          ) : (
+              <select
+                className="filters-brand"
+                value={field.server}
+                disabled={isLoading || products.length === 0}
+                onChange={onServerFilterChange}
+              >
+                <option value="">All Servers</option>
+                <option value="nidas">Nidas</option>
+                <option value="rushu">Rushu</option>
+              </select>
+            )}
+        </div>
+        : null}
+      {field.game == "dofus" ?
+
+        <div className="filters-field">
+          <span>Game Asset</span>
+          <br />
+          <br />
+          {products.length === 0 && isLoading ? (
+            <h5 className="text-subtle">Loading Filter</h5>
+          ) : (
+              <select
+                className="filters-brand"
+                value={field.asset}
+                disabled={isLoading || products.length === 0}
+                onChange={onAssetFilterChange}
+              >
+                <option value="">All Game Assets</option>
+                <option value="kamas">Kamas</option>
+                <option value="account">Account</option>
+              </select>
+            )}
+        </div> : null}
       <div className="filters-field">
         <span>Sort By</span>
         <br />
@@ -126,16 +206,16 @@ const Filters = ({ closeModal }) => {
         ) : products.length === 1 ? (
           <h5 className="text-subtle">No Price Range</h5>
         ) : (
-          <PriceRange
-            min={min}
-            max={max}
-            initMin={field.minPrice}
-            initMax={field.maxPrice}
-            isLoading={isLoading}
-            onPriceChange={onPriceChange}
-            productsCount={products.length}
-          />
-        )}
+              <PriceRange
+                min={min}
+                max={max}
+                initMin={field.minPrice}
+                initMax={field.maxPrice}
+                isLoading={isLoading}
+                onPriceChange={onPriceChange}
+                productsCount={products.length}
+              />
+            )}
       </div>
       <div className="filters-action">
         <button

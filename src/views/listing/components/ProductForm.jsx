@@ -23,7 +23,7 @@ const FormSchema = Yup.object().shape({
   name: Yup.string()
     .required('Product name is required.')
     .max(60, 'Product name must only be less than 60 characters.'),
-  brand: Yup.string()
+  category: Yup.string()
     .required('Brand name is required.'),
   game: Yup.string()
     .required('Game is required.'),
@@ -62,7 +62,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
     ownerId: profile.id,
     ownerFullName: profile.fullname,
     name: product?.name || '',
-    brand: product?.brand || '',
+    category: product?.category || '',
     game: product?.game || '',
     gameAsset: product?.gameAsset || '',
     server: product?.server || '',
@@ -145,9 +145,9 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                 &nbsp;
                 <div className="product-form-field">
                   <CustomCreatableSelect
-                    defaultValue={{ label: values.brand, value: values.brand }}
-                    name="brand"
-                    iid="brand"
+                    defaultValue={{ label: values.category, value: values.category }}
+                    name="category"
+                    iid="category"
                     options={brandOptions}
                     disabled={isLoading}
                     placeholder="Select Category"
@@ -392,7 +392,7 @@ ProductForm.propTypes = {
     ownerId: PropType.string,
     ownerFullName: PropType.string,
     name: PropType.string,
-    brand: PropType.string,
+    category: PropType.string,
     gameAsset: PropType.string,
     game: PropType.string,
     community: PropType.string,

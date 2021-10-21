@@ -6,8 +6,11 @@ import miscReducer from './miscReducer';
 import productReducer from './productReducer';
 import profileReducer from './profileReducer';
 import userReducer from './userReducer';
+import reviewsReducer from './reviewsReducer';
+
 
 const rootReducer = {
+  reviews: reviewsReducer,
   products: productReducer,
   basket: basketReducer,
   auth: authReducer,

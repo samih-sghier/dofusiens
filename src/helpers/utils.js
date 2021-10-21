@@ -1,4 +1,10 @@
+import cihLogo from 'images/Cih-bank.png';
+import faceToFaceLogo from 'images/face-to-face.jpeg';
+import paypalLogo from 'images/paypalLogo.jpeg';
+import wuLogo from 'images/wuLogo.png';
 /* eslint-disable no-nested-ternary */
+
+
 export const displayDate = (timestamp) => {
   const date = new Date(timestamp);
 
@@ -65,10 +71,26 @@ export const displayActionMessage = (msg, status = 'info') => {
   }, 3000);
 };
 
+export const paymentLogo = (payment) => {
+    switch (payment) {
+    case 'CIH':
+      return cihLogo;
+    case 'PayPal':
+      return paypalLogo;
+    case 'Western Union':
+      return wuLogo;
+    case 'Face-To-Face':
+      return faceToFaceLogo;
+    default:
+      return faceToFaceLogo;
+  }
+}
+
 export const payments = [
+  { value: 'CIH', label: 'CIH' },
   { value: 'Face-To-Face', label: 'Face-To-Face' },
   { value: 'PayPal', label: 'PayPal' },
-  { value: 'CIH', label: 'CIH' }
+  { value: 'Western Union', label: 'Western Union' }
 ];
 
 export const brandOptions = [

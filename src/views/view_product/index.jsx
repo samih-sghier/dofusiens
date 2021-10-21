@@ -2,7 +2,7 @@ import { ArrowLeftOutlined, LoadingOutlined } from '@ant-design/icons';
 import { ColorChooser, ImageLoader, MessageDisplay } from 'components/common';
 import { ProductShowcaseGrid } from 'components/product';
 import { RECOMMENDED_PRODUCTS, SHOP } from 'constants/routes';
-import { displayMoney } from 'helpers/utils';
+import { displayMoney, paymentLogo } from 'helpers/utils';
 import {
   useBasket,
   useDocumentTitle,
@@ -135,9 +135,9 @@ const ViewProduct = () => {
                 </div>
               )}
               <br />
-              {product.sizes.length >= 1 && (
+              {product.keywords.length >= 1 && (
                 <div>
-                  <span className="text-subtle">Tags </span>
+                  <span className="text-subtle">Keywords: </span>
                   {product.keywords.map((size) => (<span>
                     #{size}
                   </span>))}
@@ -157,7 +157,7 @@ const ViewProduct = () => {
                 />
               </div> */}
               <br />
-              {product.availableColors.length >= 1 && (
+              {/* {product.availableColors.length >= 1 && (
                 <div>
                   <span className="text-subtle">Choose Color</span>
                   <br />
@@ -167,11 +167,24 @@ const ViewProduct = () => {
                     onSelectedColorChange={onSelectedColorChange}
                   />
                 </div>
-              )}
+              )} */}
               <div>
                 Accepted Payments Methods
-                <span className="text-subtle"></span>
                 <br />
+                <br />
+                {product.paymentMethods && product.paymentMethods.length >= 1 && (
+                  <div className="logo-col-1">
+                    {product.paymentMethods.map((method) => (
+                      <div className="payment-logo-img-wrapper">
+                        <img
+                          alt=""
+                          className="payment-logo-img"
+                          src={paymentLogo(method)}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
                 <br />
               </div>
               <div className="divider" />

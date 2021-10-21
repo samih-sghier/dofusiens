@@ -52,7 +52,7 @@ const ProductItem = ({ product, isItemOnBasket, addToBasket }) => {
               {product.name || <Skeleton width={80} />}
             </h5>
             <p className="product-card-brand">
-              {product.brand || <Skeleton width={60} />}
+              {product.category || <Skeleton width={60} />}
             </p>
             <h4 className="product-card-price">
               {product.price ? displayMoney(product.price) : <Skeleton width={40} />}
