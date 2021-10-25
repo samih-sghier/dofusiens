@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { addProduct } from 'redux/actions/productActions';
 
-const ProductForm = lazy(() => import('../components/ProductForm'));
+//const ProductForm = lazy(() => import('../components/ProductForm'));
 
 const AddProduct = () => {
   useScrollTop();
@@ -28,7 +28,7 @@ const AddProduct = () => {
         </div>
       )}
       >
-        <ProductForm
+        {/* <ProductForm
           isLoading={isLoading}
           onSubmit={onSubmit}
           product={{
@@ -45,7 +45,7 @@ const AddProduct = () => {
             availableColors: [],
             imageCollection: []
           }}
-        />
+        /> */}
       </Suspense>
     </div>
   );

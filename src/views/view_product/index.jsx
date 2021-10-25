@@ -49,7 +49,7 @@ const ViewProduct = () => {
   };
 
   const handleAddToBasket = () => {
-    addToBasket({ ...product, selectedColor, selectedSize: selectedSize || product.sizes[0] });
+    addToBasket({ ...product });
   };
 
   return (

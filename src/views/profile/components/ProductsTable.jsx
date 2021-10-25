@@ -15,16 +15,10 @@ const ProductsTable = ({ filteredProducts }) => (
           <h5>Email</h5>
         </div>
         <div className="grid-col">
-          <h5></h5>
-        </div>
-        <div className="grid-col">
           <h5>Date Joined</h5>
         </div>
         <div className="grid-col">
-          <h5>Upvotes</h5>
-        </div>
-        <div className="grid-col">
-          <h5>Downvotes</h5>
+          <h5>Votes</h5>
         </div>
         <div className="grid-col">
           <h5>Rank</h5>
@@ -37,11 +31,11 @@ const ProductsTable = ({ filteredProducts }) => (
         key={`product-skeleton ${index}`}
         product={product}
       />
-    )) : filteredProducts.map((product) => (
+    )) : filteredProducts.map((product, index) => (
       <ProductItem
         key={product.id}
         product={product}
-        
+        rank={index + 1}
       />
     ))}
   </div>

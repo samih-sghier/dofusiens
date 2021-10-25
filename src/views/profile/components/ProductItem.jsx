@@ -4,30 +4,34 @@ import { displayActionMessage, displayDate, displayMoney } from 'helpers/utils';
 import PropType from 'prop-types';
 import React, { useRef } from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, withRouter } from 'react-router-dom';
-import { removeProduct } from 'redux/actions/productActions';
+import { upVote, downVote } from 'redux/actions/reviewsActions';
 
-const ProductItem = ({ product }) => {
+const ProductItem = ({ product, rank }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const productRef = useRef(null);
+  const { profile } = useSelector((state) => ({
+    profile: state.profile
+  }));
 
-  const onClickEdit = () => {
-    history.push(`${EDIT_PRODUCT}/${product.id}`);
-  };
-
-  const onDeleteProduct = () => {
-    productRef.current.classList.toggle('item-active');
-  };
-
-  const onConfirmDelete = () => {
-    dispatch(removeProduct(product.id));
-    displayActionMessage('Item successfully deleted');
+  const onClickUpvote = () => {
+    dispatch(upVote(product.id, profile.id));
     productRef.current.classList.remove('item-active');
   };
 
-  const onCancelDelete = () => {
+  const onClickDownvote = () => {
+    productRef.current.classList.toggle('item-active');
+  };
+
+  const onConfirmDownvote = () => {
+    dispatch(downVote(product.id));
+    //displayActionMessage('Item successfully deleted');
+    productRef.current.classList.remove('item-active');
+  };
+
+  const onCancelDownvote = () => {
     productRef.current.classList.remove('item-active');
   };
 
@@ -42,45 +46,47 @@ const ProductItem = ({ product }) => {
       >
         <div className="grid grid-count-8">
           <div className="grid-col item-img-wrapper">
-            {product.image ? (
+            {product.avatar ? (
               <ImageLoader
-                alt={product.name}
+                alt={product.fullname}
                 className="item-img"
-                src={product.image}
+                src={product.avatar}
               />
             ) : <Skeleton width={50} height={30} />}
           </div>
           <div className="grid-col">
-            <span className="text-overflow-ellipsis">{product.name || <Skeleton width={50} />}</span>
+            <span className="text-overflow-ellipsis">{product.fullname || <Skeleton width={50} />}</span>
           </div>
           <div className="grid-col">
-            <span>{product.category || <Skeleton width={50} />}</span>
-          </div>
-          <div className="grid-col">
-            <span>{product.price ? displayMoney(product.price) : <Skeleton width={30} />}</span>
+            <span>{product.email || <Skeleton width={50} />}</span>
           </div>
           <div className="grid-col">
             <span>
-              {product.dateAdded ? displayDate(product.dateAdded) : <Skeleton width={30} />}
+              {product.dateJoined ? displayDate(product.dateJoined) : <Skeleton width={30} />}
             </span>
           </div>
           <div className="grid-col">
-            <span>{product.maxQuantity || <Skeleton width={20} />}</span>
+            <span>{product.votes || <Skeleton width={20} />}</span>
+          </div>
+          <div className="grid-col">
+            <span>{rank || <Skeleton width={20} />}</span>
           </div>
         </div>
         {product.id && (
           <div className="item-action">
-            <button
-              className="button button-border button-small button-allowed"
-              onClick={onClickEdit}
-              type="button"
-            >
-              Upvote
+              <button
+                className="button button-border button-small button-allowed"
+                onClick={onClickUpvote}
+                type="button"
+                disabled={profile.upVotes && !profile.upVotes.includes(product.id)}
+              >
+                Upvote
             </button>
             &nbsp;
+
             <button
               className="button button-border button-small button-danger"
-              onClick={onDeleteProduct}
+              onClick={onClickDownvote}
               type="button"
             >
               Downvote
@@ -88,16 +94,16 @@ const ProductItem = ({ product }) => {
             <div className="item-action-confirm">
               <h5>Are you sure you want to downvote user</h5>
               <button
-                className="button button-small button-border"
-                onClick={onCancelDelete}
+                className="button button-small button-danger"
+                onClick={onCancelDownvote}
                 type="button"
               >
                 No
               </button>
               &nbsp;
               <button
-                className="button button-small button-danger"
-                onClick={onConfirmDelete}
+                className="button button-small button-allowed"
+                onClick={onConfirmDownvote}
                 type="button"
               >
                 Yes
@@ -113,20 +119,7 @@ const ProductItem = ({ product }) => {
 ProductItem.propTypes = {
   product: PropType.shape({
     id: PropType.string,
-    name: PropType.string,
-    category: PropType.string,
-    price: PropType.number,
-    maxQuantity: PropType.number,
-    description: PropType.string,
-    keywords: PropType.arrayOf(PropType.string),
-    imageCollection: PropType.arrayOf(PropType.object),
-    sizes: PropType.arrayOf(PropType.string),
-    image: PropType.string,
-    imageUrl: PropType.string,
-    isFeatured: PropType.bool,
-    isRecommended: PropType.bool,
-    dateAdded: PropType.number,
-    availableColors: PropType.arrayOf(PropType.string)
+    name: PropType.string
   }).isRequired
 };
 

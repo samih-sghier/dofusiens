@@ -4,6 +4,7 @@ import "firebase/firestore";
 import "firebase/storage";
 import firebaseConfig from "./config";
 
+
 class Firebase {
   constructor() {
     app.initializeApp(firebaseConfig);
@@ -36,10 +37,92 @@ class Firebase {
 
   addUser = (id, user) => this.db.collection("users").doc(id).set(user);
 
-  getUser = (id) => this.db.collection("users").doc(id).get();
-  
-  getAllUsers = (id) => this.db.collection("users").get();
-  
+  getUser = (id) => {
+    return this.db
+      .collection("users")
+      .doc(id)
+      .get();
+  }
+
+  upVote = (id, userId) => {
+    this.db.collection("users").doc(id).update({
+      votes:
+        app.firestore.FieldValue.increment(1)
+    });
+    this.db.collection("users").doc(userId).update({
+      upVotes:
+        app.firestore.FieldValue.arrayUnion(id)
+    });
+
+    return true;
+  }
+
+  downVote = (id) => {
+    this.db.collection("users").doc(id).update({
+      votes:
+      app.firestore.FieldValue.increment(-1)
+    });
+    return true;
+  }
+
+  getAllUsers = (lastRefKey) => {
+    let didTimeout = false;
+
+    return new Promise((resolve, reject) => {
+      (async () => {
+        if (lastRefKey) {
+          try {
+            const query = this.db
+              .collection("users")
+              .orderBy(app.firestore.FieldPath.documentId())
+              .startAfter(lastRefKey)
+              .limit(12);
+
+            const snapshot = await query.get();
+            const users = [];
+            snapshot.forEach((doc) =>
+              users.push({ id: doc.id, ...doc.data() })
+            );
+            const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+            resolve({ users, lastKey });
+          } catch (e) {
+            reject(e?.message || ":( Failed to fetch users.");
+          }
+        } else {
+          const timeout = setTimeout(() => {
+            didTimeout = true;
+            reject(new Error("Request timeout, please try again"));
+          }, 15000);
+
+          try {
+            const totalQuery = await this.db.collection("users").get();
+            const total = totalQuery.docs.length;
+            const query = this.db
+              .collection("users")
+              .orderBy(app.firestore.FieldPath.documentId())
+              .limit(12);
+            const snapshot = await query.get();
+
+            clearTimeout(timeout);
+            if (!didTimeout) {
+              const users = [];
+              snapshot.forEach((doc) =>
+                users.push({ id: doc.id, ...doc.data() })
+              );
+              const lastKey = snapshot.docs[snapshot.docs.length - 1];
+
+              resolve({ users, lastKey, total });
+            }
+          } catch (e) {
+            if (didTimeout) return;
+            reject(e?.message || ":( Failed to fetch users.");
+          }
+        }
+      })();
+    });
+  };
+
   passwordUpdate = (password) => this.auth.currentUser.updatePassword(password);
 
   changePassword = (currentPassword, newPassword) =>
@@ -299,7 +382,7 @@ class Firebase {
             const query = this.db
               .collection("products")
               .where("ownerId", "==", userId)
-              .orderBy(app.firestore.FieldPath.documentId())
+              .orderBy('votes', 'asc')
               .limit(12);
             const snapshot = await query.get();
 

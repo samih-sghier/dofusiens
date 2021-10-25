@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { Boundary } from 'components/common';
-import { AppliedFilters, ProductList } from 'components/product';
+import { AppliedFilters, ReviewsList, ProductList } from 'components/product';
 import { useDocumentTitle, useScrollTop } from 'hooks';
 import React from 'react';
 import { useSelector } from 'react-redux';
@@ -17,20 +17,22 @@ const Products = () => {
     filteredProducts: selectFilter(state.products.items, state.filter),
     requestStatus: state.app.requestStatus,
     isLoading: state.app.loading,
-    products: state.products
+    products: state.products,
+    reviews: state.reviews,
+    users: state.reviews.users
   }));
 
   return (
     <Boundary>
       <div className="product-admin-items">
         <ProductsNavbar
-          productsCount={store.products.items.length}
-          totalProductsCount={store.products.total}
+          productsCount={store.reviews.total}
+          totalProductsCount={store.reviews.total}
         />
-        <ProductList {...store}>
-          <AppliedFilters filter={store.filter} />
-          <ProductsTable filteredProducts={store.filteredProducts} />
-        </ProductList>
+        <ReviewsList {...store}>
+          {/* <AppliedFilters filter={store.filter} /> */}
+          <ProductsTable filteredProducts={store.users} />
+        </ReviewsList>
       </div>
     </Boundary>
   );

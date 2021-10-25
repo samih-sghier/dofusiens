@@ -93,6 +93,7 @@ function* authSaga({ type, payload }) {
         const ref = yield call(firebase.createAccount, payload.email, payload.password);
         const fullname = payload.fullname.split(' ').map((name) => name[0].toUpperCase().concat(name.substring(1))).join(' ');
         const user = {
+          id: ref.user.uid,
           fullname,
           avatar: defaultAvatar,
           banner: defaultBanner,
@@ -100,6 +101,7 @@ function* authSaga({ type, payload }) {
           address: '',
           basket: [],
           mobile: { data: {} },
+          votes: 0,
           role: 'USER',
           dateJoined: ref.user.metadata.creationTime || new Date().getTime()
         };
@@ -145,12 +147,10 @@ function* authSaga({ type, payload }) {
     }
     case ON_AUTHSTATE_SUCCESS: {
       const snapshot = yield call(firebase.getUser, payload.uid);
-
       if (snapshot.data()) { // if user exists in database
         const user = snapshot.data();
 
         yield put(setProfile(user));
-        yield put(setBasketItems(user.basket));
         yield put(setBasketItems(user.basket));
         yield put(signInSuccess({
           id: payload.uid,
@@ -158,9 +158,10 @@ function* authSaga({ type, payload }) {
           provider: payload.providerData[0].providerId
         }));
       } else if (payload.providerData[0].providerId !== 'password' && !snapshot.data()) {
+
         // add the user if auth provider is not password
         const user = {
-          id: payload.id,
+          id: payload.uid,
           fullname: payload.displayName ? payload.displayName : 'User',
           avatar: payload.photoURL ? payload.photoURL : defaultAvatar,
           banner: defaultBanner,
@@ -168,6 +169,7 @@ function* authSaga({ type, payload }) {
           address: '',
           basket: [],
           mobile: { data: {} },
+          votes: 0,
           role: 'USER',
           dateJoined: payload.metadata.creationTime
         };

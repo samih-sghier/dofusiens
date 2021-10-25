@@ -35,22 +35,16 @@ const BasketItem = ({ product }) => {
               <h5 className="my-0">{product.quantity}</h5>
             </div>
             <div>
-              <span className="spec-title">Size</span>
+              <span className="spec-title">Game</span>
               <h5 className="my-0">
-                {product.selectedSize}
-                {' '}
-                mm
+                {product.game}
               </h5>
             </div>
             <div>
-              <span className="spec-title">Color</span>
-              <div style={{
-                backgroundColor: product.selectedColor || product.availableColors[0],
-                width: '15px',
-                height: '15px',
-                borderRadius: '50%'
-              }}
-              />
+              <span className="spec-title">Server</span>
+              <h5 className="my-0">
+                {product.server}
+              </h5>
             </div>
           </div>
         </div>
@@ -74,15 +68,13 @@ BasketItem.propTypes = {
     id: PropType.string,
     name: PropType.string,
     category: PropType.string,
+    server: PropType.string,
     price: PropType.number,
     quantity: PropType.number,
     maxQuantity: PropType.number,
     description: PropType.string,
     keywords: PropType.arrayOf(PropType.string),
-    selectedSize: PropType.string,
-    selectedColor: PropType.string,
     imageCollection: PropType.arrayOf(PropType.string),
-    sizes: PropType.arrayOf(PropType.number),
     image: PropType.string,
     imageUrl: PropType.string,
     isFeatured: PropType.bool,

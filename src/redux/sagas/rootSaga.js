@@ -33,7 +33,9 @@ function* rootSaga() {
     ACTION.UPDATE_PROFILE
   ], profileSaga);
   yield takeLatest([
-    ACTION.GET_ALL_USERS
+    ACTION.GET_ALL_USERS,
+    ACTION.UP_VOTE,
+    ACTION.DOWN_VOTE
     ], reviewsSaga);
 }
 

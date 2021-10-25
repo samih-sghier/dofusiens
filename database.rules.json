@@ -24,6 +24,9 @@
         "banner": {
           ".validate": "newData.isString()"
         },
+        "votes": {
+          ".validate": "newData.isNumber()"
+        },
         "dateJoined": {
           ".validate": "newData.isString()"
         }

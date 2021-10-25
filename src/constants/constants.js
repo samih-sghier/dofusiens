@@ -68,6 +68,12 @@ export const REMOVE_SELECTED_RECENT = 'REMOVE_SELECTED_RECENT';
 export const REGISTER_USER = 'REGISTER_USER';
 export const GET_USER = 'GET_USER';
 export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const GET_ALL_USERS_SUCCESS = 'GET_ALL_USERS_SUCCESS';
+export const DOWN_VOTE = 'DOWN_VOTE';
+export const DOWN_VOTE_SUCCESS = 'DOWN_VOTE_SUCCESS';
+export const UP_VOTE = 'UP_VOTE';
+export const UP_VOTE_SUCCESS = 'UP_VOTE_SUCCESS';
+
 export const ADD_USER = 'ADD_USER';
 export const DELETE_USER = 'DELETE_USER';
 export const EDIT_USER = 'EDIT_USER';
