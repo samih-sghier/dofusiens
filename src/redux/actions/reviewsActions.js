@@ -18,9 +18,14 @@ export const getAllUsersSuccess = (users) => ({
   payload: users
 });
 
-export const downVote = (id) => ({
+export const downVote = (id, userId, upVotes, downVotes) => ({
   type: DOWN_VOTE,
-  payload: id
+  payload: {
+    id,
+    userId,
+    upVotes,
+    downVotes
+  }
 });
 
 export const downVoteSuccess = (id) => ({
@@ -28,17 +33,17 @@ export const downVoteSuccess = (id) => ({
   payload: id
 });
 
-export const upVote = (id, userId) => ({
+export const upVote = (id, userId, upVotes, downVotes) => ({
   type: UP_VOTE,
   payload: {
     id,
-    userId
+    userId,
+    upVotes,
+    downVotes
   }
 });
 
-export const upVoteSuccess = (id, userId) => ({
+export const upVoteSuccess = (id) => ({
   type: UP_VOTE_SUCCESS,
-  payload: {
-    id,
-    userId
-  }});
+  payload: id
+});

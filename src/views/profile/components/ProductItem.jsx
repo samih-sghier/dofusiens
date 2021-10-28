@@ -1,12 +1,13 @@
 import { ImageLoader } from 'components/common';
-import { EDIT_PRODUCT } from 'constants/routes';
+import { EDIT_PRODUCT, VIEW_PROFILE } from 'constants/routes';
 import { displayActionMessage, displayDate, displayMoney } from 'helpers/utils';
 import PropType from 'prop-types';
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, withRouter } from 'react-router-dom';
 import { upVote, downVote } from 'redux/actions/reviewsActions';
+import { getUser } from 'redux/actions/userActions';
 
 const ProductItem = ({ product, rank }) => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const ProductItem = ({ product, rank }) => {
   }));
 
   const onClickUpvote = () => {
-    dispatch(upVote(product.id, profile.id));
+    dispatch(upVote(product.id, profile.id, profile.upVotes, profile.downVotes));
     productRef.current.classList.remove('item-active');
   };
 
@@ -26,7 +27,7 @@ const ProductItem = ({ product, rank }) => {
   };
 
   const onConfirmDownvote = () => {
-    dispatch(downVote(product.id));
+    dispatch(downVote(product.id, profile.id, profile.upVotes, profile.downVotes));
     //displayActionMessage('Item successfully deleted');
     productRef.current.classList.remove('item-active');
   };
@@ -43,6 +44,10 @@ const ProductItem = ({ product, rank }) => {
       <div
         className={`item item-products ${!product.id && 'item-loading'}`}
         ref={productRef}
+        onClick={() => {
+          dispatch(getUser(product.id));
+          history.push(VIEW_PROFILE);
+        }}
       >
         <div className="grid grid-count-8">
           <div className="grid-col item-img-wrapper">
@@ -73,14 +78,15 @@ const ProductItem = ({ product, rank }) => {
           </div>
         </div>
         {product.id && (
+
           <div className="item-action">
-              <button
-                className="button button-border button-small button-allowed"
-                onClick={onClickUpvote}
-                type="button"
-                disabled={profile.upVotes && !profile.upVotes.includes(product.id)}
-              >
-                Upvote
+            <button
+              className="button button-border button-small button-allowed"
+              onClick={onClickUpvote}
+              type="button"
+              disabled={profile.upVotes.includes(product.id)}
+            >
+              Upvote
             </button>
             &nbsp;
 
@@ -88,6 +94,7 @@ const ProductItem = ({ product, rank }) => {
               className="button button-border button-small button-danger"
               onClick={onClickDownvote}
               type="button"
+              disabled={profile.downVotes.includes(product.id)}
             >
               Downvote
             </button>

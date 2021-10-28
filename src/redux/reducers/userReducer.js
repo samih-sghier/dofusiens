@@ -1,19 +1,15 @@
-import { ADD_USER, DELETE_USER, EDIT_USER } from 'constants/constants';
+import { ADD_USER, DELETE_USER, EDIT_USER, GET_USER_SUCCESS } from 'constants/constants';
 
-// const initState = [
-//   {
-//     firstname: 'Gago',
-//     lastname: 'Ka',
-//     email: 'gagoka@mail.com',
-//     password: 'gagooo',
-//     avatar: '',
-//     banner: '',
-//     dateJoined: 0
-//   }
-// ];
 
-export default (state = {}, action) => {
+export default (state = {
+  currentUser: {}
+}, action) => {
   switch (action.type) {
+    case GET_USER_SUCCESS:
+      return {
+        ...state,
+        currentUser: action.payload
+      };
     case ADD_USER:
       return [...state, action.payload];
     case EDIT_USER:

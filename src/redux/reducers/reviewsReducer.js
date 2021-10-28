@@ -29,10 +29,8 @@ export default (state = {
     case UP_VOTE_SUCCESS:
       return {
         users: state.users.map((user) => {
-          if (user.id === action.payload.id.id && user.votes) {
+          if (user.id === action.payload.id && user.votes) {
             user.votes = user.votes + 1;
-          } else if (user.id === action.payload.id.userId && user.upVotes) {
-            user.upVotes =user.upVotes.push(action.payload.id.id);
           }
           return user;
         }).sort((a,b) => (a.votes > b.votes) ? -1 : ((b.votes > a.votes) ? 1 : 0)),

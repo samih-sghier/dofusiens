@@ -4,6 +4,8 @@ import authSaga from './authSaga';
 import productSaga from './productSaga';
 import profileSaga from './profileSaga';
 import reviewsSaga from './reviewsSaga';
+import userSaga from './userSaga';
+
 
 function* rootSaga() {
   yield takeLatest([
@@ -36,7 +38,10 @@ function* rootSaga() {
     ACTION.GET_ALL_USERS,
     ACTION.UP_VOTE,
     ACTION.DOWN_VOTE
-    ], reviewsSaga);
+  ], reviewsSaga);
+  yield takeLatest([
+    ACTION.GET_USER
+  ], userSaga);
 }
 
 export default rootSaga;

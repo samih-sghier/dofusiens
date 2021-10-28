@@ -1,7 +1,7 @@
 import { ArrowLeftOutlined, LoadingOutlined } from '@ant-design/icons';
 import { ColorChooser, ImageLoader, MessageDisplay } from 'components/common';
 import { ProductShowcaseGrid } from 'components/product';
-import { RECOMMENDED_PRODUCTS, SHOP } from 'constants/routes';
+import { RECOMMENDED_PRODUCTS, SHOP, VIEW_PROFILE } from 'constants/routes';
 import { displayMoney, paymentLogo } from 'helpers/utils';
 import {
   useBasket,
@@ -11,8 +11,10 @@ import {
   useScrollTop
 } from 'hooks';
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import Select from 'react-select';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUser } from 'redux/actions/userActions';
 
 const ViewProduct = () => {
   const { id } = useParams();
@@ -20,10 +22,12 @@ const ViewProduct = () => {
   const { addToBasket, isItemOnBasket } = useBasket(id);
   useScrollTop();
   useDocumentTitle(`View ${product?.name || 'Item'}`);
+  const dispatch = useDispatch();
 
   const [selectedImage, setSelectedImage] = useState(product?.image || '');
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
+  const history = useHistory();
 
   const {
     recommendedProducts,
@@ -183,6 +187,23 @@ const ViewProduct = () => {
                         />
                       </div>
                     ))}
+                  </div>
+                )}
+                <br />
+              </div>
+              <div className="divider" />
+              <br />
+              <div>
+                Owner Details
+                <br />
+                <br />
+                {product.ownerFullName && product.ownerId && (
+                  <div className="logo-col-1">
+                    <Link to={VIEW_PROFILE} onClick={() => {
+                      dispatch(getUser(product.ownerId));
+
+                      }} >
+                      {product.ownerFullName}</Link>
                   </div>
                 )}
                 <br />

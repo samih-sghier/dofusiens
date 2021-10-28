@@ -17,9 +17,9 @@ export const selectFilter = (products, filter) => {
     const matchBrand = product.category ? product.category.toLowerCase().includes(filter.category) : true;
     const matchGame = product.game ? product.game.toLowerCase().includes(filter.game) : true;
     const matchServer = product.server ? product.server.toLowerCase().includes(filter.server) : true;
-    //const matchAsset = product.gameAsset ? product.gameAsset.toLowerCase().includes(filter.asset) : true;
+    const matchAsset = product.gameAsset ? product.gameAsset.toLowerCase().includes(filter.asset) : true;
     
-    return ((matchKeyword || matchDescription) && matchBrand && matchGame && matchServer  && isInRange);
+    return ((matchKeyword || matchDescription) && matchBrand && matchGame && matchServer && matchAsset && isInRange);
   }).sort((a, b) => {
     if (filter.sortBy === 'name-desc') {
       return a.name < b.name ? 1 : -1;

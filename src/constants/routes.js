@@ -23,3 +23,4 @@ export const ADD_PRODUCT_CLIENT = '/listing/add';
 export const CLIENT_DASHBOARD = '/profile/dashboard';
 export const USERS_LIST = '/profile/users';
 export const ADD_REVIEW = '/profile/add_review';
+export const VIEW_PROFILE = '/profile/view/:id';

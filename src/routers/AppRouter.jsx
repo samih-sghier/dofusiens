@@ -62,6 +62,11 @@ const AppRouter = () => (
           path={ROUTES.VIEW_PRODUCT}
         />
         <ClientRoute
+          component={view.ViewProfile}
+          exact
+          path={ROUTES.VIEW_PROFILE}
+        />
+        <ClientRoute
           component={view.UserAccount}
           exact
           path={ROUTES.ACCOUNT}

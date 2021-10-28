@@ -51,16 +51,24 @@ class Firebase {
     });
     this.db.collection("users").doc(userId).update({
       upVotes:
-        app.firestore.FieldValue.arrayUnion(id)
+        app.firestore.FieldValue.arrayUnion(id),
+      downVotes:
+        app.firestore.FieldValue.arrayRemove(id)
     });
 
     return true;
   }
 
-  downVote = (id) => {
+  downVote = (id, userId) => {
     this.db.collection("users").doc(id).update({
       votes:
-      app.firestore.FieldValue.increment(-1)
+        app.firestore.FieldValue.increment(-1)
+    });
+    this.db.collection("users").doc(userId).update({
+      downVotes:
+        app.firestore.FieldValue.arrayUnion(id),
+      upVotes:
+        app.firestore.FieldValue.arrayRemove(id)
     });
     return true;
   }

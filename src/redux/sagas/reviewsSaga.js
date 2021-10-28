@@ -6,6 +6,7 @@ import { history } from 'routers/AppRouter';
 import firebase from 'services/firebase';
 import { setLoading, setRequestStatus } from 'redux/actions/miscActions';
 import { getAllUsers, getAllUsersSuccess, upVoteSuccess, downVoteSuccess } from 'redux/actions/reviewsActions';
+import { updateProfileSuccess } from 'redux/actions/profileActions';
 
 function* initRequest() {
   yield put(setLoading(true));
@@ -34,7 +35,7 @@ function* reviewsSaga({ type, payload }) {
           handleError('No users found.');
         } else {
           yield put(getAllUsersSuccess({
-            users: result.users.sort((a,b) => (a.votes > b.votes) ? -1 : ((b.votes > a.votes) ? 1 : 0)),
+            users: result.users.sort((a, b) => (a.votes > b.votes) ? -1 : ((b.votes > a.votes) ? 1 : 0)),
             lastRefKey: result.lastKey ? result.lastKey : state.users.lastRefKey,
             total: result.total ? result.total : state.users.total
           }));
@@ -53,7 +54,16 @@ function* reviewsSaga({ type, payload }) {
         yield put(setLoading(false));
         const result = yield call(firebase.upVote, payload.id, payload.userId);
         if (result) {
-          yield put(upVoteSuccess(payload));
+          yield put(upVoteSuccess({
+            id: payload.id
+          }));
+          payload.upVotes.push(payload.id);
+          payload.downVotes = payload.downVotes.filter((id) => id !== payload.id);
+          yield put(updateProfileSuccess({
+            upVotes: payload.upVotes,
+            downVotes: payload.downVotes
+          }));
+
         } else {
           handleError('Failed to upvote.');
         }
@@ -68,10 +78,16 @@ function* reviewsSaga({ type, payload }) {
     case DOWN_VOTE: {
       try {
         yield put(setLoading(false));
-        const result = yield call(firebase.downVote, payload);
+        const result = yield call(firebase.downVote, payload.id, payload.userId);
         if (result) {
           yield put(downVoteSuccess({
-            id: payload
+            id: payload.id
+          }));
+          payload.downVotes.push(payload.id);
+          payload.upVotes = payload.upVotes.filter((id) => id !== payload.id);
+          yield put(updateProfileSuccess({
+            upVotes: payload.upVotes,
+            downVotes: payload.downVotes
           }));
         } else {
           handleError('Failed to downvote.');

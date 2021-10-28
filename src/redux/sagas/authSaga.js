@@ -102,6 +102,8 @@ function* authSaga({ type, payload }) {
           basket: [],
           mobile: { data: {} },
           votes: 0,
+          upVotes: [],
+          downVotes: [],
           role: 'USER',
           dateJoined: ref.user.metadata.creationTime || new Date().getTime()
         };
@@ -161,7 +163,7 @@ function* authSaga({ type, payload }) {
 
         // add the user if auth provider is not password
         const user = {
-          id: payload.uid,
+          id: payload.id,
           fullname: payload.displayName ? payload.displayName : 'User',
           avatar: payload.photoURL ? payload.photoURL : defaultAvatar,
           banner: defaultBanner,
@@ -170,6 +172,8 @@ function* authSaga({ type, payload }) {
           basket: [],
           mobile: { data: {} },
           votes: 0,
+          upVotes: [],
+          downVotes: [],
           role: 'USER',
           dateJoined: payload.metadata.creationTime
         };

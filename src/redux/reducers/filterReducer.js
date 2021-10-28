@@ -4,7 +4,8 @@ import {
   REMOVE_SELECTED_RECENT, RESET_FILTER, SET_BRAND_FILTER,
   SET_MAX_PRICE_FILTER,
   SET_MIN_PRICE_FILTER, SET_TEXT_FILTER,
-  SET_GAME_FILTER, SET_SERVER_FILTER
+  SET_GAME_FILTER, SET_SERVER_FILTER,
+  SET_ASSET_FILTER
 } from 'constants/constants';
 
 const initState = {
@@ -13,6 +14,7 @@ const initState = {
   category: '',
   game: '',
   server: '',
+  asset: '',
   minPrice: 0,
   maxPrice: 0,
   sortBy: ''
@@ -35,6 +37,11 @@ export default (state = initState, action) => {
       return {
         ...state,
         game: action.payload
+      };
+    case SET_ASSET_FILTER:
+      return {
+        ...state,
+        asset: action.payload
       };
     case SET_SERVER_FILTER:
       return {

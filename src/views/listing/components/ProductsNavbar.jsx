@@ -4,6 +4,7 @@ import { ADD_PRODUCT } from 'constants/routes';
 import PropType from 'prop-types';
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { ViewProfile } from 'views';
 
 const ProductsNavbar = (props) => {
   const { productsCount, totalProductsCount } = props;
