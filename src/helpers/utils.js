@@ -21,10 +21,23 @@ export const displayDate = (timestamp) => {
   return `${monthNames[monthIndex]} ${day}, ${year}`;
 };
 
+export const currentCurrency = (country) => {
+  switch (country) {
+    case 'Morocco':
+      return 'MAD';
+    case 'United States':
+      return '$';
+    case 'France':
+      return '€';
+    default:
+      return 'MAD';
+  }
+}
+
 export const displayMoney = (n) => {
-  const format = new Intl.NumberFormat('en-US', {
+  const format = new Intl.NumberFormat('fr-MA', {
     style: 'currency',
-    currency: 'USD'
+    currency: 'MAD'
   });
 
   // or use toLocaleString()

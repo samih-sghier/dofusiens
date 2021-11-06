@@ -161,11 +161,21 @@
 
 .checkout-shipping-form {
   width: 100%;
+  color: $heading-color;
+  border-color: $border-color;
+  input, select, textarea {
+    color: $heading-color;
+  }
 }
 
 .checkout-field {
   width: 100%;
   margin: 0 $s-size;
+  color: $heading-color;
+  border-color: $border-color;
+  input, select, textarea {
+    color: $heading-color;
+  }
   
   @include mobile {
     margin: 0
@@ -212,6 +222,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: $background-color-01;
 
   @include mobile {
     // flex-direction: column;

@@ -13,9 +13,12 @@ import PropType from 'prop-types';
 import React from 'react';
 import * as Yup from 'yup';
 import { useSelector } from 'react-redux';
-import { brandOptions, game, gameAsset, community, 
-  brazilServers, retroServers, frenchServers, spanishServers, 
-  internationalServers, payments } from 'helpers/utils';
+import {
+  brandOptions, game, gameAsset, community,
+  brazilServers, retroServers, frenchServers, spanishServers,
+  internationalServers, payments
+} from 'helpers/utils';
+import { CountryDropdown, RegionDropdown, CountryRegionData } from 'react-country-region-selector';
 
 
 
@@ -74,7 +77,10 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
     isFeatured: product?.isFeatured || false,
     isRecommended: product?.isRecommended || false,
     // availableColors: product?.availableColors || [],
-    paymentMethods: product?.paymentMethods || []
+    paymentMethods: product?.paymentMethods || [],
+    country: product?.country || '',
+    city: product?.city || '',
+    currency: product?.currency || ''
   };
 
   const {
@@ -103,8 +109,8 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
   };
 
   const currentServer = (com) => {
-    switch(com) {
-      case 'French' :
+    switch (com) {
+      case 'French':
         return frenchServers;
       case 'International':
         return internationalServers;
@@ -116,7 +122,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
         return retroServers;
       default:
         return [];
-      }
+    }
   }
 
   return (
@@ -309,33 +315,25 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
               <br />
               <div className="d-flex">
                 <div className="product-form-field">
-                  <input
-                    checked={values.isFeatured}
-                    className=""
-                    id="featured"
-                    onChange={(e) => setValues({ ...values, isFeatured: e.target.checked })}
-                    type="checkbox"
-                  />
-                  <label htmlFor="featured">
-                    <h5 className="d-flex-grow-1 margin-0">
-                      &nbsp; Add to Featured &nbsp;
+                  <h5 className="d-flex-grow-1 margin-1">
+                    &nbsp;* Country&nbsp;
                     </h5>
-                  </label>
-                </div>
-                <div className="product-form-field">
-                  <input
-                    checked={values.isRecommended}
-                    className=""
-                    id="recommended"
-                    onChange={(e) => setValues({ ...values, isRecommended: e.target.checked })}
-                    type="checkbox"
+                  <CountryDropdown
+                    value={values.country}
+                    onChange={(val) => setValues({ ...values, country: val })}
                   />
-                  <label htmlFor="recommended">
-                    <h5 className="d-flex-grow-1 margin-0">
-                      &nbsp; Add to Recommended &nbsp;
-                    </h5>
-                  </label>
                 </div>
+                &nbsp;
+                {values.country && (
+                  <div className="product-form-field">
+                    <h5 className="d-flex-grow-1 margin-1">
+                      &nbsp;* Region&nbsp;
+                    </h5>
+                    <RegionDropdown
+                      country={values.country}
+                      value={values.city}
+                      onChange={(val) => setValues({ ...values, city: val })} />
+                  </div>)}
               </div>
               <br />
               <br />
@@ -406,7 +404,10 @@ ProductForm.propTypes = {
     imageUrl: PropType.string,
     isFeatured: PropType.bool,
     isRecommended: PropType.bool,
-    paymentMethods: PropType.arrayOf(PropType.string)
+    paymentMethods: PropType.arrayOf(PropType.string),
+    country: PropType.string,
+    city: PropType.string,
+    currency: PropType.string
     //availableColors: PropType.arrayOf(PropType.string)
   }).isRequired,
   onSubmit: PropType.func.isRequired,

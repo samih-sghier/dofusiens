@@ -33,13 +33,14 @@ const Home = () => {
         <div className="banner">
           <div className="banner-desc">
             <h1 className="text-thin">
-              <strong>See</strong>
-              &nbsp;everything with&nbsp;
-              <strong>Clarity</strong>
+              <strong>Dragoturkey</strong>
+              &nbsp; &nbsp;
+              <strong>Marketplace</strong>
             </h1>
             <p>
-              Buying eyewear should leave you happy and good-looking, with money in your pocket.
-              Glasses, sunglasses, and contacts—we’ve got your eyes covered.
+              #1 E-trade marketplace platform in Morocco, buy and sell your in-game digital currency, items, accounts and more ... from other players!
+              {/* Buying eyewear should leave you happy and good-looking, with money in your pocket.
+              Glasses, sunglasses, and contacts—we’ve got your eyes covered. */}
             </p>
             <br />
             <Link to={SHOP} className="button">

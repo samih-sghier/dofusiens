@@ -39,6 +39,7 @@
   overflow: hidden;
   margin-left: 10px;
   position: relative;
+  background-color: #fff;
  // background: $border-color-focus;
   .payment-logo-img {
     width: 100%;
@@ -81,6 +82,7 @@
   position: absolute;
   top: 100%;
   right: 0;
+  color: #fff;
   box-shadow: 0 5px 12px rgba(0, 0, 0, .1);
   display: none;
 }

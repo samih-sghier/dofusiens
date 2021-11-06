@@ -63,6 +63,15 @@
         "gameAsset": {
           ".validate": "newData.isString()"
         },
+        "currency": {
+          ".validate": "newData.isString()"
+        },
+        "country": {
+          ".validate": "newData.isString()"
+        },
+        "city": {
+          ".validate": "newData.isString()"
+        },
         "community": {
           ".validate": "newData.isString()"
         },

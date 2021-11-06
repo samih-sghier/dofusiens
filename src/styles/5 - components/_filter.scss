@@ -10,7 +10,7 @@
   margin-bottom: $m-size;
   padding-bottom: $m-size;
   border-bottom: 1px solid $border-color;
-
+  border-color: $background-color;
   &:nth-child(1),
   &:nth-child(2) {
     flex-basis: 50%;
@@ -23,6 +23,8 @@
 
 .filters-brand {
   width: 100%;
+  background-color: $background-color;;
+  border-color: $border-color;
 }
 
 .filters-action {
@@ -32,6 +34,9 @@
 
 .filters-button {
   flex-grow: 1;
+  color: $heading-color;
+  background-color: $background-color-01;
+  border-color: $border-color;
 }
 
 .filters-toggle {
@@ -41,7 +46,7 @@
 .filters-toggle-sub {
   width: 400px;
   height: 360px;
-  background: $white;
+  border-color: $border-color; 
   position: relative;
   padding: $m-size;
 

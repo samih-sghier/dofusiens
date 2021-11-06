@@ -1,8 +1,8 @@
 .button {
   background: $button-color;
   padding: $m-size;
-  border: 1px solid $button-color;
-  color: $white;
+  border: 1px solid #3a3e41;
+  color: #c6c1bb;
   font-weight: bold;
   position: relative;
   display: flex;
@@ -30,7 +30,8 @@
 .button-link {
   @extend .button;
   background: none;
-  color: $black;
+  background-color: $background-color;
+  color: #c6c1bb;
   border: none;
 
   &:hover {

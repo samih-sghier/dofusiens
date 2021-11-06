@@ -5,7 +5,11 @@
   margin: auto;
   display: flex;
   flex-direction: column;
-
+  color: $heading-color;
+  border-color: $border-color;
+  input, select, textarea {
+    color: $heading-color;
+  }
   @include mobile {
     width: 100%;
     padding: 0;

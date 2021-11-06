@@ -2,6 +2,8 @@
   width: 100%;
   position: relative;
   // box-shadow: inset 0 2px 5px rgba(0, 0, 0, .2);
+  color: $heading-color;
+
 }
 
 .price-range-control {
@@ -10,6 +12,7 @@
   height: 30px;
   display: flex;
   margin-bottom: 3rem;
+  color: $heading-color;
 }
 
 .price-range-slider {
@@ -26,10 +29,12 @@
 .price-range-input {
   width: 50%;
   border: none !important;
-  font-size: 4rem !important;
+  font-size: 2rem !important;
   padding: 0 !important;
   flex-grow: 1;
   text-align: center;
+  color: $background-color;
+
 }
 
 .price-input-error {
@@ -40,15 +45,21 @@
 .price-range-scale {
   display: flex;
   padding: $m-size 0;
+  color: $heading-color;
+
 }
 
 .price-range-price {
   font-size: 12px;
   font-weight: bold;
+  color: $heading-color;
+
 }
 
 .price-range-price:nth-child(1) {
   flex-grow: 1;
+  color: $heading-color;
+
 }
 
 // .range-slider svg,

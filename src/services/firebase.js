@@ -390,7 +390,6 @@ class Firebase {
             const query = this.db
               .collection("products")
               .where("ownerId", "==", userId)
-              .orderBy('votes', 'asc')
               .limit(12);
             const snapshot = await query.get();
 

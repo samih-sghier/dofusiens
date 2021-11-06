@@ -44,12 +44,13 @@ const ProductItem = ({ product, rank }) => {
       <div
         className={`item item-products ${!product.id && 'item-loading'}`}
         ref={productRef}
-        onClick={() => {
-          dispatch(getUser(product.id));
-          history.push(VIEW_PROFILE);
-        }}
       >
-        <div className="grid grid-count-8">
+        <div className="grid grid-count-8"
+          onClick={() => {
+            dispatch(getUser(product.id));
+            history.push(VIEW_PROFILE);
+          }}
+        >
           <div className="grid-col item-img-wrapper">
             {product.avatar ? (
               <ImageLoader
