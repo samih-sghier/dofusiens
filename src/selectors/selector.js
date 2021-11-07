@@ -18,8 +18,10 @@ export const selectFilter = (products, filter) => {
     const matchGame = product.game ? product.game.toLowerCase().includes(filter.game) : true;
     const matchServer = product.server ? product.server.toLowerCase().includes(filter.server) : true;
     const matchAsset = product.gameAsset ? product.gameAsset.toLowerCase().includes(filter.asset) : true;
-    
-    return ((matchKeyword || matchDescription) && matchBrand && matchGame && matchServer && matchAsset && isInRange);
+    const matchCountry = product.country ? product.country.toLowerCase().includes(filter.country) : true;
+    const matchCity = product.city ? product.city.toLowerCase().includes(filter.city) : true;
+
+    return ((matchKeyword || matchDescription) && matchBrand && matchGame && matchServer && matchCity && matchAsset && isInRange);
   }).sort((a, b) => {
     if (filter.sortBy === 'name-desc') {
       return a.name < b.name ? 1 : -1;

@@ -10,7 +10,7 @@ const ContactForm = lazy(() => import('../components/ContactForm'));
 
 const AddProduct = () => {
   useScrollTop();
-  useDocumentTitle('Add New Product | Salinaka');
+  useDocumentTitle('Add New Product | Dragoturkey');
   const isLoading = useSelector((state) => state.app.loading);
   const dispatch = useDispatch();
 

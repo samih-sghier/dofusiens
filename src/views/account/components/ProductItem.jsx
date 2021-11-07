@@ -71,7 +71,7 @@ const ProductItem = ({ product }) => {
         {product.id && (
           <div className="item-action">
             <button
-              className="button button-border button-small"
+              className="button button-border button-small button-allowed"
               onClick={onClickEdit}
               type="button"
             >

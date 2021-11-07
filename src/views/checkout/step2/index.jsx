@@ -39,7 +39,7 @@ const FormSchema = Yup.object().shape({
 });
 
 const ShippingDetails = ({ profile, shipping, subtotal }) => {
-  useDocumentTitle('Check Out Step 2 | Salinaka');
+  useDocumentTitle('Check Out Step 2 | Dragoturkey');
   useScrollTop();
   const dispatch = useDispatch();
   const history = useHistory();
@@ -82,7 +82,7 @@ const ShippingDetails = ({ profile, shipping, subtotal }) => {
                 <ShippingForm />
                 <br />
                 {/*  ---- TOTAL --------- */}
-                <ShippingTotal subtotal={subtotal} />
+                <ShippingTotal subtotal={subtotal}  />
                 <br />
                 {/*  ----- NEXT/PREV BUTTONS --------- */}
                 <div className="checkout-shipping-action">

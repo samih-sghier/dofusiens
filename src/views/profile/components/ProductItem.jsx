@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, withRouter } from 'react-router-dom';
 import { upVote, downVote } from 'redux/actions/reviewsActions';
 import { getUser } from 'redux/actions/userActions';
+import defaultAvatar from 'images/defaultAvatar.jpg';
 
 const ProductItem = ({ product, rank }) => {
   const dispatch = useDispatch();
@@ -52,13 +53,12 @@ const ProductItem = ({ product, rank }) => {
           }}
         >
           <div className="grid-col item-img-wrapper">
-            {product.avatar ? (
-              <ImageLoader
-                alt={product.fullname}
-                className="item-img"
-                src={product.avatar}
-              />
-            ) : <Skeleton width={50} height={30} />}
+            <ImageLoader
+              alt={product.fullname}
+              className="item-img"
+              src={product.avatar ? product.avatar : defaultAvatar}
+            />
+
           </div>
           <div className="grid-col">
             <span className="text-overflow-ellipsis">{product.fullname || <Skeleton width={50} />}</span>

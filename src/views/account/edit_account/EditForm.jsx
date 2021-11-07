@@ -16,6 +16,7 @@ const EditForm = ({ isLoading, authProvider }) => {
         disabled={isLoading}
         name="fullname"
         type="text"
+        disabled
         label="* Full Name"
         placeholder="Enter your full name"
         component={CustomInput}
@@ -25,6 +26,7 @@ const EditForm = ({ isLoading, authProvider }) => {
         disabled={authProvider !== 'password' || isLoading}
         name="email"
         type="email"
+        disabled
         label="* Email Address"
         placeholder="test@example.com"
         component={CustomInput}

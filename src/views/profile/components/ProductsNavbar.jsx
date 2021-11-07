@@ -19,7 +19,7 @@ const ProductsNavbar = (props) => {
       </h3>
       <UserSearchBar />
       &nbsp;
-      <FiltersToggle>
+      {/* <FiltersToggle>
         <button className="button-muted button-small" type="button">
           <FilterOutlined />
           &nbsp;More Filters
@@ -32,7 +32,7 @@ const ProductsNavbar = (props) => {
       >
         <PlusOutlined />
         &nbsp; Add New Product
-      </button>
+      </button> */}
     </div>
   );
 };

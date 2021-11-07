@@ -7,7 +7,7 @@ import { applyFilter } from 'redux/actions/filterActions';
 
 const ProductAppliedFilters = ({ filteredProductsCount }) => {
   const filter = useSelector((state) => state.filter, shallowEqual);
-  const fields = ['category', 'asset', 'game', 'server', 'minPrice', 'maxPrice', 'sortBy', 'keyword'];
+  const fields = ['category', 'asset', 'game', 'server', 'minPrice', 'country', 'city', 'maxPrice', 'sortBy', 'keyword'];
   const isFiltered = fields.some((key) => !!filter[key]);
   const dispatch = useDispatch();
 
@@ -20,11 +20,11 @@ const ProductAppliedFilters = ({ filteredProductsCount }) => {
   };
 
   const onRemoveBrandFilter = () => {
-    dispatch(applyFilter({ category: '' }));
+    dispatch(applyFilter({ category: '', game: '', server: '', asset: '' }));
   };
 
   const onRemoveGameFilter = () => {
-    dispatch(applyFilter({ game: '', server: '' }));
+    dispatch(applyFilter({ game: '', server: '', asset: '' }));
   };
 
   const onRemoveServerFilter = () => {
@@ -37,6 +37,14 @@ const ProductAppliedFilters = ({ filteredProductsCount }) => {
 
   const onRemoveSortFilter = () => {
     dispatch(applyFilter({ sortBy: '' }));
+  };
+
+  const onRemoveCountryFilter = () => {
+    dispatch(applyFilter({ country: '', city: '' }));
+  };
+
+  const onRemoveCityFilter = () => {
+    dispatch(applyFilter({ city: '' }));
   };
 
   return !isFiltered ? null : (
@@ -56,6 +64,33 @@ const ProductAppliedFilters = ({ filteredProductsCount }) => {
             <div className="pill padding-right-l">
               <h5 className="pill-content margin-0">{filter.keyword}</h5>
               <div className="pill-remove" onClick={onRemoveKeywordFilter} role="presentation">
+                <h5 className="margin-0 text-subtle">
+                  <CloseCircleOutlined />
+                </h5>
+              </div>
+            </div>
+          </div>
+        )}
+        {filter.country && (
+          <div className="pill-wrapper">
+            <span className="d-block">Country</span>
+            <div className="pill padding-right-l">
+              <h5 className="pill-content margin-0">{filter.country}</h5>
+              <div className="pill-remove" onClick={onRemoveCountryFilter} role="presentation">
+                <h5 className="margin-0 text-subtle">
+                  <CloseCircleOutlined />
+                </h5>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {filter.city && (
+          <div className="pill-wrapper">
+            <span className="d-block">City</span>
+            <div className="pill padding-right-l">
+              <h5 className="pill-content margin-0">{filter.city}</h5>
+              <div className="pill-remove" onClick={onRemoveCityFilter} role="presentation">
                 <h5 className="margin-0 text-subtle">
                   <CloseCircleOutlined />
                 </h5>

@@ -53,7 +53,13 @@ const FormSchema = Yup.object().shape({
   isRecommended: Yup.boolean(),
   paymentMethods: Yup.array()
     .of(Yup.string().required())
-    .min(1, 'Please add an acceptable payment method for this product.')
+    .min(1, 'Please add an acceptable payment method for this product.'),
+  country: Yup.string()
+    .required('Country is required.'),
+  city: Yup.string()
+    .required('City is required.'),
+
+
   // availableColors: Yup.array()
   //   .of(Yup.string().required())
   //   .min(1, 'Please add a default color for this product.')
@@ -78,9 +84,9 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
     isRecommended: product?.isRecommended || false,
     // availableColors: product?.availableColors || [],
     paymentMethods: product?.paymentMethods || [],
-    country: product?.country || '',
+    country: product?.country || 'Morocco',
     city: product?.city || '',
-    currency: product?.currency || ''
+    currency: product?.currency || 'MAD'
   };
 
   const {
@@ -142,7 +148,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                     disabled={isLoading}
                     name="name"
                     type="text"
-                    label="* Product Name"
+                    label="* Title"
                     placeholder="Gago"
                     style={{ textTransform: 'capitalize' }}
                     component={CustomInput}
@@ -319,7 +325,9 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                     &nbsp;* Country&nbsp;
                     </h5>
                   <CountryDropdown
-                    value={values.country}
+                    disabled
+                    defaultOptionLabel='Morocco'
+                    value={'Morocco'}
                     onChange={(val) => setValues({ ...values, country: val })}
                   />
                 </div>
@@ -330,7 +338,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                       &nbsp;* Region&nbsp;
                     </h5>
                     <RegionDropdown
-                      country={values.country}
+                      country={'Morocco'}
                       value={values.city}
                       onChange={(val) => setValues({ ...values, city: val })} />
                   </div>)}

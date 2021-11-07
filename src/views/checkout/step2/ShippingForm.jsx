@@ -35,7 +35,7 @@ const ShippingForm = () => {
               name="address"
               type="text"
               label="* Shipping Address"
-              placeholder="Enter full shipping address"
+              placeholder="Enter your address"
               component={CustomInput}
             />
           </div>

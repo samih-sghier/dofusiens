@@ -9,7 +9,7 @@ import { addProduct } from 'redux/actions/productActions';
 
 const AddProduct = () => {
   useScrollTop();
-  useDocumentTitle('Add New Product | Salinaka');
+  useDocumentTitle('Add New Product | Dragoturkey');
   const isLoading = useSelector((state) => state.app.loading);
   const dispatch = useDispatch();
 

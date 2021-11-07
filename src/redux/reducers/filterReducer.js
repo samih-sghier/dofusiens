@@ -5,7 +5,8 @@ import {
   SET_MAX_PRICE_FILTER,
   SET_MIN_PRICE_FILTER, SET_TEXT_FILTER,
   SET_GAME_FILTER, SET_SERVER_FILTER,
-  SET_ASSET_FILTER
+  SET_ASSET_FILTER, SET_CITY_FILTER,
+  SET_COUNTRY_FILTER
 } from 'constants/constants';
 
 const initState = {
@@ -15,6 +16,8 @@ const initState = {
   game: '',
   server: '',
   asset: '',
+  country: '',
+  city: '',
   minPrice: 0,
   maxPrice: 0,
   sortBy: ''
@@ -47,6 +50,18 @@ export default (state = initState, action) => {
       return {
         ...state,
         server: action.payload
+      };
+
+    case SET_COUNTRY_FILTER:
+      return {
+        ...state,
+        country: action.payload
+      };
+
+    case SET_CITY_FILTER:
+      return {
+        ...state,
+        city: action.payload
       };
     case SET_MAX_PRICE_FILTER:
       return {

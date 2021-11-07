@@ -114,6 +114,24 @@ const ViewProduct = () => {
               Product Details
               <br />
               <br />
+              {product.country && (
+                <div>
+                  <span className="text-subtle"><b>Country: <b>{product.country}</b></b></span>
+                </div>
+              )}
+              <br />
+              {product.city && (
+                <div>
+                  <span className="text-subtle"><b>City: <b>{product.city}</b></b></span>
+                </div>
+              )}
+              <br />
+              {product.category && (
+                <div>
+                  <span className="text-subtle"><b>Category: <b>{product.category}</b></b></span>
+                </div>
+              )}
+              <br />
               {product.game && (
                 <div>
                   <span className="text-subtle"><b>Game: <b>{product.game}</b></b></span>
