@@ -102,7 +102,7 @@ const Filters = ({ closeModal }) => {
   };
 
   const onResetFilter = () => {
-    const filterFields = ['category', 'game', 'server', 'country', 'city', 'minPrice', 'maxPrice', 'sortBy'];
+    const filterFields = ['category', 'game', 'asset', 'server', 'country', 'city', 'minPrice', 'maxPrice', 'sortBy'];
 
     if (filterFields.some((key) => !!filter[key])) {
       dispatch(resetFilter());
@@ -164,7 +164,7 @@ const Filters = ({ closeModal }) => {
               >
                 <option value="">All Games</option>
                 <option value="dofus">Dofus</option>
-                <option value="dofus touch">Dofus Touch</option>
+                {/* <option value="dofus touch">Dofus Touch</option> */}
               </select>
             )}
         </div> : null}
@@ -184,8 +184,36 @@ const Filters = ({ closeModal }) => {
                   onChange={onServerFilterChange}
                 >
                   <option value="">All Servers</option>
-                  <option value="nidas">Nidas</option>
-                  <option value="rushu">Rushu</option>
+                  <option value="Agride">Agride</option>
+                  <option value="Atcham">Atcham</option>
+                  <option value="Boune">Boune</option>
+                  <option value="Brumen">Brumen</option>
+                  <option value="Crail">Crail</option>
+                  <option value="Crocabulia">Crocabulia</option>
+                  <option value="Dagob">Dagob</option>
+                  <option value="Domo">Domo</option>
+                  <option value="Echo">Echo</option>
+                  <option value="Eratz">Eratz</option>
+                  <option value="Furye">Furye</option>
+                  <option value="Galgarion">Galgarion</option>
+                  <option value="Henual">Henual</option>
+                  <option value="Hoskar">Hoskar</option>
+                  <option value="Hulhu">Hulhu</option>
+                  <option value="Ilyzaelle">Ilyzaelle</option>
+                  <option value="Jahash">Jahash</option>
+                  <option value="Julith">Julith</option>
+                  <option value="Meriana">Meriana</option>
+                  <option value="Merkator">Merkator</option>
+                  <option value="Muta">Muta</option>
+                  <option value="Nidas">Nidas</option>
+                  <option value="Ombre">Ombre</option>
+                  <option value="Oto Mustam">Oto Mustam</option>
+                  <option value="Pandore">Pandore</option>
+                  <option value="Pikmi">Pikmi</option>
+                  <option value="Rubilax">Rubilax</option>
+                  <option value="Sak">Sak</option>
+                  <option value="Ultram">Ultram</option>
+                  <option value="Ush">Ush</option>
                 </select>
               )}
           </div>
@@ -204,6 +232,7 @@ const Filters = ({ closeModal }) => {
                 >
                   <option value="">All Game Assets</option>
                   <option value="kamas">Kamas</option>
+                  <option value="item">Item</option>
                   <option value="account">Account</option>
                 </select>
               )}

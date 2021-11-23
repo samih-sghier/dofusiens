@@ -63,6 +63,8 @@
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "firebase": "^8.4.3",
+    "firebase-admin": "^10.0.0",
+    "firebase-functions": "^3.16.0",
     "formik": "^2.2.6",
     "history": "^4.10.0",
     "moment": "^2.29.1",

@@ -72,7 +72,11 @@ const ProductItem = ({ product, rank }) => {
             </span>
           </div>
           <div className="grid-col">
-            <span>{product.votes || <Skeleton width={20} />}</span>
+            {product.votes  ? (
+              <span>{product.votes || <Skeleton width={20} />}</span>
+            ) : (
+                <span><h5 className="text-subtle text-italic">{product.votes || <Skeleton width={20} />}</h5> </span>
+              )}
           </div>
           <div className="grid-col">
             <span>{rank || <Skeleton width={20} />}</span>

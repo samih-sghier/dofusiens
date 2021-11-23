@@ -111,14 +111,14 @@ export const brandOptions = [
 ];
 
 export const game = [
-  { value: 'Dofus', label: 'Dofus' },
-  { value: 'Dofus Touch', label: 'Dofus Touch' },
+  { value: 'Dofus', label: 'Dofus' }
+  //{ value: 'Dofus Touch', label: 'Dofus Touch' },
 ];
 
 export const gameAsset = [
-  { value: 'Kamas', label: 'Kamas' },
-  // { value: 'Items', label: 'Items' },
-  // { value: 'Accounts', label: 'Accounts' },
+  { value: 'kamas', label: 'Kamas' },
+  { value: 'item', label: 'Item' },
+  { value: 'account', label: 'Account' }
 ];
 export const community = [
   { value: 'All', label: 'All' },

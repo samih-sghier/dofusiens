@@ -10,6 +10,9 @@ import { StepTracker } from '../components';
 import withCheckout from '../hoc/withCheckout';
 import CreditPayment from './CreditPayment';
 import PayPalPayment from './PayPalPayment';
+import CihPayment from './CihPayment';
+import WuPayment from './WuPayment';
+
 import Total from './Total';
 
 const FormSchema = Yup.object().shape({
@@ -38,7 +41,7 @@ const Payment = ({ shipping, payment, subtotal }) => {
     cardnumber: payment.cardnumber || '',
     expiry: payment.expiry || '',
     ccv: payment.ccv || '',
-    type: payment.type || 'paypal'
+    type: payment.type || 'paypal' || 'CIH' || 'Western Union'
   };
 
   const onConfirm = () => {
@@ -56,7 +59,7 @@ const Payment = ({ shipping, payment, subtotal }) => {
         validateOnChange
         validationSchema={FormSchema}
         validate={(form) => {
-          if (form.type === 'paypal') {
+          if (form.type === 'paypal' || form.type === 'CIH' || form.type === 'Western Union' ) {
             displayActionMessage('Feature not ready yet :)', 'info');
           }
         }}
@@ -66,6 +69,8 @@ const Payment = ({ shipping, payment, subtotal }) => {
           <Form className="checkout-step-3">
             <CreditPayment />
             <PayPalPayment />
+            <CihPayment />
+            <WuPayment />
             <Total
               isInternational={shipping.isInternational}
               subtotal={subtotal}

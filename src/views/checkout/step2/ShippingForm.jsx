@@ -32,6 +32,27 @@ const ShippingForm = () => {
         <div className="checkout-fieldset">
           <div className="d-block checkout-field">
             <Field
+              name="tradeDate"
+              type="text"
+              label="* Trade Date (YYYY-MM-DD: )"
+              placeholder="Enter your time availabilities"
+              component={CustomInput}
+              style={{ textTransform: 'capitalize' }}
+            />
+          </div>
+          <div className="d-block checkout-field">
+            <Field
+              name="username"
+              type="text"
+              label="* Username"
+              placeholder="Enter your players username"
+              component={CustomInput}
+            />
+          </div>
+        </div>
+        <div className="checkout-fieldset">
+          <div className="d-block checkout-field">
+            <Field
               name="address"
               type="text"
               label="* Shipping Address"
@@ -50,14 +71,14 @@ const ShippingForm = () => {
                 {meta.touched && meta.error ? (
                   <span className="label-input label-error">{meta.error}</span>
                 ) : (
-                  // eslint-disable-next-line jsx-a11y/label-has-associated-control
-                  <label
-                    className="label-input"
-                    htmlFor={field.name}
-                  >
-                    Shipping Option
+                    // eslint-disable-next-line jsx-a11y/label-has-associated-control
+                    <label
+                      className="label-input"
+                      htmlFor={field.name}
+                    >
+                      Shipping Option
                   </label>
-                )}
+                  )}
                 <div className="checkout-checkbox-field">
                   <input
                     checked={field.value}
@@ -70,10 +91,10 @@ const ShippingForm = () => {
                   />
                   <label className="d-flex w-100" htmlFor={field.name}>
                     <h5 className="d-flex-grow-1 margin-0">
-                      &nbsp; International Shipping &nbsp;
-                      <span className="text-subtle">7-14 days</span>
+                      &nbsp; Trade Insurance &nbsp;
+                      <span className="text-subtle">Guarranteed money back</span>
                     </h5>
-                    <h4 className="margin-0">$50.00</h4>
+                    <h4 className="margin-0">20,00 MAD</h4>
                   </label>
                 </div>
               </div>

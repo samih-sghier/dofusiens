@@ -73,6 +73,7 @@ const SearchBar = () => {
           onChange={onSearchChange}
           onKeyUp={onKeyUp}
           onFocus={onFocusInput}
+          disabled
           placeholder="Search user..."
           readOnly={isLoading}
           type="text"

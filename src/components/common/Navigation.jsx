@@ -13,6 +13,7 @@ import Badge from './Badge';
 import FiltersToggle from './FiltersToggle';
 import MobileNavigation from './MobileNavigation';
 import SearchBar from './SearchBar';
+import { displayActionMessage } from 'helpers/utils';
 
 const Navigation = () => {
   const navbar = useRef(null);
@@ -75,8 +76,8 @@ const Navigation = () => {
       <ul className="navigation-menu-main">
         <li><NavLink activeClassName="navigation-menu-active" exact to={ROUTE.HOME}>Home</NavLink></li>
         <li><NavLink activeClassName="navigation-menu-active" to={ROUTE.SHOP}>Shop</NavLink></li>
-        <li><NavLink activeClassName="navigation-menu-active" to={ROUTE.FEATURED_PRODUCTS}>Featured</NavLink></li>
-        <li><NavLink activeClassName="navigation-menu-active" to={ROUTE.RECOMMENDED_PRODUCTS}>Recommended</NavLink></li>
+        <li><a href="https://www.reddit.com/r/dragoturkey/">Forum</a></li>
+        <li><NavLink activeClassName="navigation-menu-active" to={ROUTE.HOW_IT_WORKS}>How it works</NavLink></li>
         <li><NavLink activeClassName="navigation-menu-active" to={ROUTE.USERS_LIST}>Reviews</NavLink></li>
       </ul>
       {(pathname === ROUTE.SHOP || pathname === ROUTE.SEARCH) && (

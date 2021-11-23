@@ -149,7 +149,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                     name="name"
                     type="text"
                     label="* Title"
-                    placeholder="Gago"
+                    placeholder="Selling Dofus Vulbis"
                     style={{ textTransform: 'capitalize' }}
                     component={CustomInput}
                   />
@@ -234,7 +234,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                     name="price"
                     id="price"
                     type="number"
-                    label="* Price"
+                    label="* Price (MAD)"
                     component={CustomInput}
                   />
                 </div>

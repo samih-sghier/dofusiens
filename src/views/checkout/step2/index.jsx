@@ -26,6 +26,10 @@ const FormSchema = Yup.object().shape({
     .required('Email is required.'),
   address: Yup.string()
     .required('Shipping address is required.'),
+  username: Yup.string()
+    .required('Player username is required.'),
+  tradeDate: Yup.string()
+    .required('Trade time is required.'),
   mobile: Yup.object()
     .shape({
       country: Yup.string(),
@@ -48,6 +52,8 @@ const ShippingDetails = ({ profile, shipping, subtotal }) => {
     fullname: shipping.fullname || profile.fullname || '',
     email: shipping.email || profile.email || '',
     address: shipping.address || profile.address || '',
+    username: shipping.username || profile.username || '',
+    tradeDate: shipping.tradeDate || '',
     mobile: shipping.mobile || profile.mobile || {},
     isInternational: shipping.isInternational || false,
     isDone: shipping.isDone || false
@@ -59,6 +65,8 @@ const ShippingDetails = ({ profile, shipping, subtotal }) => {
       email: form.email,
       address: form.address,
       mobile: form.mobile,
+      username: form.username,
+      tradeDate: form.tradeDate,
       isInternational: form.isInternational,
       isDone: true
     }));
@@ -70,7 +78,7 @@ const ShippingDetails = ({ profile, shipping, subtotal }) => {
       <div className="checkout">
         <StepTracker current={2} />
         <div className="checkout-step-2">
-          <h3 className="text-center">Shipping Details</h3>
+          <h3 className="text-center">Trade Details</h3>
           <Formik
             initialValues={initFormikValues}
             validateOnChange
@@ -82,7 +90,7 @@ const ShippingDetails = ({ profile, shipping, subtotal }) => {
                 <ShippingForm />
                 <br />
                 {/*  ---- TOTAL --------- */}
-                <ShippingTotal subtotal={subtotal}  />
+                <ShippingTotal subtotal={subtotal} />
                 <br />
                 {/*  ----- NEXT/PREV BUTTONS --------- */}
                 <div className="checkout-shipping-action">
@@ -119,6 +127,8 @@ ShippingDetails.propTypes = {
     fullname: PropType.string,
     email: PropType.string,
     address: PropType.string,
+    username: PropType.string,
+    tradeDate: PropType.string,
     mobile: PropType.object
   }).isRequired,
   shipping: PropType.shape({
@@ -126,6 +136,8 @@ ShippingDetails.propTypes = {
     email: PropType.string,
     address: PropType.string,
     mobile: PropType.object,
+    username: PropType.string,
+    tradeDate: PropType.string,
     isInternational: PropType.bool,
     isDone: PropType.bool
   }).isRequired

@@ -44,6 +44,15 @@ const AppRouter = () => (
           exact
           path={ROUTES.RECOMMENDED_PRODUCTS}
         />
+        <ClientRoute
+          component={view.UserAccount}
+          exact
+          path={ROUTES.DISCUSSIONS}
+        />
+        <PublicRoute
+          component={view.HowItWorks}
+          path={ROUTES.HOW_IT_WORKS}
+        />
         <PublicRoute
           component={view.SignUp}
           path={ROUTES.SIGNUP}
