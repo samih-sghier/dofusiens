@@ -337,10 +337,78 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                     <h5 className="d-flex-grow-1 margin-1">
                       &nbsp;* Region&nbsp;
                     </h5>
-                    <RegionDropdown
-                      country={'Morocco'}
-                      value={values.city}
-                      onChange={(val) => setValues({ ...values, city: val })} />
+                    <select>
+                      <option value="Agadir">Agadir</option>
+                      <option value="Ain Harrouda">Ain Harrouda</option>
+                      <option value="Al Hoceima">Al Hoceima</option>
+                      <option value="Azrou">Azrou</option>
+                      <option value="Aït Melloul">Aït Melloul</option>
+                      <option value="Ben Guerir">Ben Guerir</option>
+                      <option value="Beni Ansa">Beni Ansa</option>
+                      <option value="Beni Mellal">Beni Mellal</option>
+                      <option value="Benslimane">Benslimane</option>
+                      <option value="Berkane">Berkane</option>
+                      <option value="Berrechid">Berrechid</option>
+                      <option value="Bouskoura">Bouskoura</option>
+                      <option value="Casablanca">Casablanca</option>
+                      <option value="Dar Bouazza">Dar Bouazza</option>
+                      <option value="Dcheira El Jihadia">Dcheira El Jihadia</option>
+                      <option value="Drargua">Drargua</option>
+                      <option value="El Jadida">El Jadida</option>
+                      <option value="El Kelaa Des Sraghna">El Kelaa Des Sraghna</option>
+                      <option value="Errachidia">Errachidia</option>
+                      <option value="Essaouira">Essaouira</option>
+                      <option value="Fez">Fez</option>
+                      <option value="Fnideq">Fnideq</option>
+                      <option value="Fquih Ben Salah">Fquih Ben Salah</option>
+                      <option value="Guelmim">Guelmim</option>
+                      <option value="Guerci">Guerci</option>
+                      <option value="Inezgane">Inezgane</option>
+                      <option value="Kenitra">Kenitra</option>
+                      <option value="Khemisset">Khemisset</option>
+                      <option value="Khenifra">Khenifra</option>
+                      <option value="Khouribga">Khouribga</option>
+                      <option value="Ksar El Kebir">Ksar El Kebir</option>
+                      <option value="Lahraouyine">Lahraouyine</option>
+                      <option value="Larache">Larache</option>
+                      <option value="Lqliaa">Lqliaa</option>
+                      <option value="M'diq">M'diq</option>
+                      <option value="Marrakesh">Marrakesh</option>
+                      <option value="Martil">Martil</option>
+                      <option value="Meknes">Meknes</option>
+                      <option value="Midelt">Midelt</option>
+                      <option value="Mohammedia">Mohammedia</option>
+                      <option value="Nador">Nador</option>
+                      <option value="Ouarzazate">Ouarzazate</option>
+                      <option value="Ouazzane">Ouazzane</option>
+                      <option value="Oued Zem">Oued Zem</option>
+                      <option value="Oujda">Oujda</option>
+                      <option value="Oulad Teima">Oulad Teima</option>
+                      <option value="Rabat">Rabat</option>
+                      <option value="Safi">Safi</option>
+                      <option value="Salé">Salé</option>
+                      <option value="Sefrou">Sefrou</option>
+                      <option value="Settat">Settat</option>
+                      <option value="Sidi Bennour">Sidi Bennour</option>
+                      <option value="Sidi Kacem">Sidi Kacem</option>
+                      <option value="Sidi Slimane">Sidi Slimane</option>
+                      <option value="Skhirat">Skhirat</option>
+                      <option value="Souk El Arbaa">Souk El Arbaa</option>
+                      <option value="Suq as-Sabt Awlad an-Nama">Suq as-Sabt Awlad an-Nama</option>
+                      <option value="Tan-Tan">Tan-Tan</option>
+                      <option value="Tangier">Tangier</option>
+                      <option value="Taourirt">Taourirt</option>
+                      <option value="Taroudant">Taroudant</option>
+                      <option value="Taza">Taza</option>
+                      <option value="Temara">Temara</option>
+                      <option value="Tetouan">Tetouan</option>
+                      <option value="Tifelt">Tifelt</option>
+                      <option value="Tiznit">Tiznit</option>
+                      <option value="Youssoufia">Youssoufia</option>
+                    </select>
+
+
+
                   </div>)}
               </div>
               <br />

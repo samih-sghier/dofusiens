@@ -212,7 +212,7 @@ const ViewProduct = () => {
               <div className="divider" />
               <br />
               <div>
-                Owner Details
+                Product Owner Details
                 <br />
                 <br />
                 {product.ownerFullName && product.ownerId && (
