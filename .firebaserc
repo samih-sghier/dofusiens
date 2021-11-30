@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "souika2"
+    "default": "dragoturkey-4a4e6",
+    "dragoturkey": "dragoturkey-4a4e6"
   }
 }

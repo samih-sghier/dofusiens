@@ -231,9 +231,9 @@ const Filters = ({ closeModal }) => {
                   onChange={onAssetFilterChange}
                 >
                   <option value="">All Game Assets</option>
-                  <option value="kamas">Kamas</option>
-                  <option value="item">Item</option>
-                  <option value="account">Account</option>
+                  <option value="Kamas">Kamas</option>
+                  <option value="Item">Item</option>
+                  <option value="Account">Account</option>
                 </select>
               )}
           </div>

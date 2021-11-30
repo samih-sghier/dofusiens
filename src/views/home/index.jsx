@@ -38,7 +38,7 @@ const Home = () => {
               <strong>Marketplace</strong>
             </h1>
             <p>
-              #1 e-trade marketplace platform in Morocco, buy and sell your in-game digital currency, items, accounts and more ... from other players!
+              #1 E-trade Marketplace Platform in Morocco. Buy and Sell your in-game digital currency, items, accounts and more ... from other players!
               {/* Buying eyewear should leave you happy and good-looking, with money in your pocket.
               Glasses, sunglasses, and contacts—we’ve got your eyes covered. */}
             </p>

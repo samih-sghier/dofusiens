@@ -116,9 +116,9 @@ export const game = [
 ];
 
 export const gameAsset = [
-  { value: 'kamas', label: 'Kamas' },
-  { value: 'item', label: 'Item' },
-  { value: 'account', label: 'Account' }
+  { value: 'Kamas', label: 'Kamas' },
+  { value: 'Item', label: 'Item' },
+  { value: 'Account', label: 'Account' }
 ];
 export const community = [
   { value: 'All', label: 'All' },

@@ -5,7 +5,7 @@ const useDocumentTitle = (title) => {
     if (title) {
       document.title = title;
     } else {
-      document.title = 'Dragoturkey - eCommerce React App';
+      document.title = 'Dragoturkey - #1 E-trade Marketplace';
     }
   }, [title]);
 };

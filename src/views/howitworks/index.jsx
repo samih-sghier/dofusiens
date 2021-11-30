@@ -32,7 +32,7 @@ const RecommendedProducts = () => {
           <div className="product-display-grid">
             <h2>What is Dragoturkey: </h2>
           </div>
-          <p>Dragoturkey is a fan based e-trade marketplace where players can list their items for sale in Morocco!</p>
+          <p>Dragoturkey is a fan based E-trade marketplace where players can list their items for sale in Morocco!</p>
           <br></br>
           <p>The platform allows transparency during in-person transactions, and a reputation system to avoid scammers!</p>
 

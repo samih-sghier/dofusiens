@@ -56,8 +56,7 @@ const FormSchema = Yup.object().shape({
     .min(1, 'Please add an acceptable payment method for this product.'),
   country: Yup.string()
     .required('Country is required.'),
-  city: Yup.string()
-    .required('City is required.'),
+
 
 
   // availableColors: Yup.array()
@@ -338,6 +337,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                       &nbsp;* Region&nbsp;
                     </h5>
                     <select>
+                      <option value="">All</option>
                       <option value="Agadir">Agadir</option>
                       <option value="Ain Harrouda">Ain Harrouda</option>
                       <option value="Al Hoceima">Al Hoceima</option>

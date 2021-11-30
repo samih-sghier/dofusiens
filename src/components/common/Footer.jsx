@@ -72,14 +72,23 @@ const Footer = () => {
               </span>
             </strong>
           </div>
-
-          {/* <div className="footer-row-3">
+          <div className="footer-row-3">
             <strong>
               <span>
-                <a href="mailto:someone@yoursite.com">Contact Us</a>
+                {' '}
+                <a href="https://www.instagram.com/drago.turkey/">Instagram</a>
               </span>
             </strong>
-          </div> */}
+          </div>
+          <div className="footer-row-4">
+            <strong>
+              <span>
+                {' '}
+                <a href="https://www.reddit.com/r/dragoturkey/">Reddit</a>
+              </span>
+            </strong>
+          </div>
+
         </div>
       </div>
     </footer>
