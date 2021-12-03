@@ -123,6 +123,7 @@ function* productSaga({ type, payload }) {
 
         const product = {
           ...payload,
+          id: key,
           image: downloadURL,
           imageCollection: [image, ...images]
         };

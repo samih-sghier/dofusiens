@@ -84,7 +84,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
     // availableColors: product?.availableColors || [],
     paymentMethods: product?.paymentMethods || [],
     country: product?.country || 'Morocco',
-    city: product?.city,
+    city: product?.city || '',
     currency: product?.currency || 'MAD'
   };
 

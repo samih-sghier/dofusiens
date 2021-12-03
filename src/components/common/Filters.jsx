@@ -61,12 +61,6 @@ const Filters = ({ closeModal }) => {
     setFilter({ ...field, game: val });
   };
 
-  const onServerFilterChange = (e) => {
-    const val = e.target.value;
-
-    setFilter({ ...field, server: val });
-  };
-
   const onAssetFilterChange = (e) => {
     const val = e.target.value;
 
@@ -288,7 +282,7 @@ const Filters = ({ closeModal }) => {
               className="filters-brand"
               value={field.city}
               disabled={isLoading || products.length === 0}
-              onChange={onServerFilterChange}
+              onChange={onCityFilterChange}
             >
               <option value="Agadir">Agadir</option>
               <option value="Ain Harrouda">Ain Harrouda</option>
