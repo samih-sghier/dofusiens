@@ -111,8 +111,8 @@ export const brandOptions = [
 ];
 
 export const game = [
-  { value: 'dofus', label: 'Dofus' },
-  { value: 'dofus touch', label: 'Dofus Touch' }
+  { value: 'Dofus', label: 'Dofus' },
+  { value: 'Dofus Touch', label: 'Dofus Touch' }
 ];
 
 export const gameAsset = [

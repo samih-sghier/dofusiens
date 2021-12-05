@@ -148,7 +148,7 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                     name="name"
                     type="text"
                     label="* Title"
-                    placeholder="Selling Dofus Vulbis"
+                    placeholder="Selling 100M Kamas"
                     style={{ textTransform: 'capitalize' }}
                     component={CustomInput}
                   />
@@ -336,7 +336,13 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                     <h5 className="d-flex-grow-1 margin-1">
                       &nbsp;* Region&nbsp;
                     </h5>
-                    <select>
+                    <select
+                      value={values.city}
+                      onChange={(val) => setValues({ 
+                        ...values,
+                        city: val.target.value
+                       })}
+                    >
                       <option value="">All</option>
                       <option value="Agadir">Agadir</option>
                       <option value="Ain Harrouda">Ain Harrouda</option>
@@ -406,9 +412,6 @@ const ProductForm = ({ product, onSubmit, isLoading }) => {
                       <option value="Tiznit">Tiznit</option>
                       <option value="Youssoufia">Youssoufia</option>
                     </select>
-
-
-
                   </div>)}
               </div>
               <br />
