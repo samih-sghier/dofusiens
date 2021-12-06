@@ -24,12 +24,13 @@ const ForgotPassword = () => {
     }
   }, [authStatus, isAuthenticating]);
 
-  const onEmailChange = (value, error) => {
-    setField({ email: value, error });
+  const onEmailChange = (val, error) => {
+    setField({ email: val.target.value, error });
   };
 
   const onSubmitEmail = () => {
     if (!!field.email && !field.error) {
+      alert(field.email);
       dispatch(resetPassword(field.email));
     }
   };
